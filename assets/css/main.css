@@ -8611,3 +8611,9 @@ input, select, textarea {
 	display: inline-block;
 	width: 200px;
 }
+
+/* Details Page */
+.content-wrapper {
+	padding: 2rem 2rem 0;
+}
+
