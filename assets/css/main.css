@@ -8601,3 +8601,13 @@ input, select, textarea {
 			#wrapper.divided > .invert:first-child {
 				box-shadow: none !important;
 			}
+
+/* About Me */
+.histories {
+	list-style: decimal;
+}
+
+.histories img {
+	display: inline-block;
+	width: 200px;
+}
