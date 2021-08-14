@@ -8603,13 +8603,17 @@ input, select, textarea {
 			}
 
 /* About Me */
-.histories {
+.work-history-list, .education-list {
 	list-style: decimal;
 }
 
-.histories img {
+.work-history-list img {
 	display: inline-block;
 	width: 200px;
+}
+
+.education-list li:not(:last-child) {
+	margin-bottom: 1rem;
 }
 
 /* Details Page */
