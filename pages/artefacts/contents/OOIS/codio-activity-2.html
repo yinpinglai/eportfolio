@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../../../../assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="../../../../assets/css/noscript.css" /></noscript>
+  <title>Codio Activity 2</title>
+</head>
+<body class="is-preload">
+  <div id="wrapper">
+    <div class="content-wrapper">
+      <h2>Codio Activity 2</h2>
+      <hr />
+      <br />
+      <div>
+        <h3>Introduction to MySQL (Grade: 100%)</h3>
+        <ul>
+          <li>
+            <div>
+              <h4>Relational databases are organised in what kind of structure?</h4>
+              <span>Tables and rows</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Write each of the following SQL statements in a new line:</h4>
+              <ol>
+                <li>List the available databases</li>
+                <li>Change to the people database</li>
+                <li>List the available tables</li>
+                <li>Select all the records from the basic_info table</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_1_3_4.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Write each of the following SQL statements in a new line:</h4>
+              <ol>
+                <li>Use the people database</li>
+                <li>Display the name column from the names table.</li>
+                <li>Display only 3 records of the city column from the basic_info table.</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_1_5_1.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Write each of the following SQL statements in a new line:</h4>
+              <ol>
+                <li>Use the people database</li>
+                <li>Display the surname column from the names table.</li>
+                <li>Query only the name and id columns of the names table and sort the results by id in descending order.</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_1_6_1.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Write each of the following SQL statements in a new line:</h4>
+              <ol>
+                <li>Use the people database</li>
+                <li>Select from the basic_info table the email column
+                  Where the email column is equal to: ‘sed.pede@nisi.com’</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_1_9_1.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Write each of the following SQL statements in a new line:</h4>
+              <ol>
+                <li>Select all the records from the basic_info table
+                  Where birthdays are less or equal to 2016
+                  Get the records only if the id is between 1 and 5
+                  Order by id in a descending order
+                  </li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_1_12_2.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Complement your SQL SELECT understanding by writing the following statements</h4>
+              <ol>
+                <li>Use the directory database</li>
+                <li>Select all the records from the company_profiles table and limit them to 5 rows only</li>
+                <li>Select only the id and the company_name columns from the company_profiles table and sort them by id in descending order</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_1_13_1.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Complement your SQL SELECT understanding by writing the following statements </h4>
+              <ol>
+                <li>Use the directory database</li>
+                <li>Select all the company_profiles records where company_name is equal to Lorem Ipsum Institute or Et LLP;</li>
+                <li>Finally, select only the id and phone_num attributes from the company_profiles table and get the records where the id is between 40 and 60</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_1_13_2.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Write the following query into the SQL file</h4>
+              <ol>
+                <li>Use the directory database</li>
+                <li>Display the available tables</li>
+                <li>Select all the records from the company_profiles table that match the id: 27</li>
+                <li>Select only the id and phone_num columns of the company_profiles table and sort them by id in ascending order</li>
+                <li>Select only the id and company_name columns from the company_profiles where the id is greater or equal to 40. Limit the results to 5 rows.</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_1_13_3.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3>Creating databases and inserting data (Grade: 80%)</h3>
+        <ul>
+          <li>
+            <div>
+              <h4>Please select the correct answer and Check it! to have your answer assessed. If you are wrong, you will see the correct answer highlighted:</h4>
+              <span><b>The CRUD acronym stands for:</b>Create, Read, Update and Delete</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Please select all of the possible correct answers and Check it! to have your answer assessed. If you are wrong, you will see the correct answer highlighted:</h4>
+              <b>Which are examples of statements that correspond to the SQL DML?</b><br />
+              <ul>
+                <li>SELECT * FROM table_name;</li>
+                <li>SELECT id,name FROM names WHERE id > 7;</li>
+                <li>INSERT INTO table_name (column_name) VALUES (“Value”);</li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Complete the following task:</h4>
+              <ul>
+                <li>Create a database named: dog_breeds</li>
+              </ul>
+            </div>
+            <div>
+              <a href="./exercises/mysql_2_6_4.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Please select all of the possible correct answers and Check it! to have your answer assessed. If you are wrong, you will see the correct answer highlighted:</h4>
+              <b>What is true about MySQL datatypes:</b><br />
+              <ul>
+                <li>Normally, the integer goes from a negative to positive value.</li>
+                <li>The Date() format support the ‘YYYY’ format.</li>
+                <li>Each column in a database table is required to have a name and a data type.</li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Complete the following tasks:</h4>
+              <ul>
+                <li>Override the dog_breeds database</li>
+                <li>
+                  <div>Use the dog_breeds database and create a dog_catalog table with the following features:</div>
+                  <div>Columns:</div>
+                  <ul>
+                    <li>id: Integer(4) not NULL and auto increment from 1</li>
+                    <li>breed: Varchar(255)</li>
+                    <li>region: Varchar(255)</li>
+                    <li>Primary key is the id column</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <a href="./exercises/mysql_2_8_5.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Please select all of the possible correct answers and Check it! to have your answer assessed. If you are wrong, you will see the correct answer highlighted:</h4>
+              <b>What is true about SQL constraints?</b><br />
+              <ul>
+                <li>A constraint is usually associated with a table and they define certain properties that data in a database must comply with.</li>
+                <li>This is a correct example of a SQL primary key constraint definition:
+                  CREATE TABLE table_name (id INT(4), PRIMARY KEY (id));</li>
+                <li>A field with a NULL value is a field with no value.</li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Using the dog_breeds database, complete the following tasks:</h4>
+              <ul>
+                <li>Insert into the dog_catalog table:
+                  Columns: breed, region
+                  Values:
+                  "English Sheepdog", “England”
+                  </li>
+              </ul>
+            </div>
+            <div>
+              <a href="./exercises/mysql_2_10_3.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Creating the scientists table</h4>
+              <b>Using the famous_scientists database:</b>
+              <ul>
+                <li>Create a scientists table with the following features:</li>
+                <span>Columns:</span><br />
+                <ul>
+                  <li>id: Integer max. size of 1. Can’t be null. Auto increment from 1.</li>
+                  <li>name: Variable length string max. size of 255 characters. Can’t be null.</li>
+                  <li>discovery: Text. Can’t be null.</li>
+                  <li>year_of_birth: Integer max. size of 4. Can’t be null.</li>
+                  <li>year_of_death: Integer max. size of 4. Defaults to null.
+                    Primary key is the id column.</li>
+                </ul>
+              </ul>
+            </div>
+            <div>
+              <a href="./exercises/mysql_2_11_1.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Insert scientists data</h4>
+              <b>Using the famous_scientists database:</b>
+              <ul>
+                <li>Insert the following data to the scientists table:</li>
+                <span>Values:</span><br />
+                <ul>
+                  <li>("Galileo Galilei", "Modern observational astronomy", 1564, 1642)</li>
+                </ul>
+              </ul>
+            </div>
+            <div>
+              <a href="./exercises/mysql_2_11_2.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3>Altering existing databases and updating data (Grade: 80%)</h3>
+        <ul>
+          <li>
+            <div>
+              <h4>What is true about these SQL data types?</h4>
+              <ol>
+                <li>The DATE SQL data type has a YYYY-MM-DD 00:00:00 format</li>
+                <li>The FLOAT(size,d) SQL data type is part of the numbers data types.</li>
+                <li>INT(size) data type is suitable for non-decimal numbers and can be a negative digit.</li>
+              </ol>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Updating the trips table</h4>
+              <ul>
+                <li>Using the EPDriver database:</li>
+                <ul>
+                  <li>Set all the records from the trip_datetime_start column of the trips table to 2015-09-14 00:00:00 where the id is less than 5</li>
+                </ul>
+              </ul>
+            </div>
+            <div>
+              <a href="./exercises/mysql_3_6_4.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Omitting WHERE</h4>
+              <ul>
+                <li>Using the EPDriver database:</li>
+                <ul>
+                  <li>Set the name column of all the records from the users table to John Doe</li>
+                </ul>
+              </ul>
+            </div>
+            <div>
+              <a href="./exercises/mysql_3_7_2.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Altering tables</h4>
+              <ul>
+                <li>Using the EPDriver database:</li>
+                <ul>
+                  <li>Change the name of the name column of the drivers table to driver_name with a VARCHAR data type and a 125 character limit that can’t be null</li>
+                  <li>Add a new driver_age column to the drivers table with a TINYINT(2) data type that must not be a negative value and can’t be null</li>
+                </ul>
+              </ul>
+            </div>
+            <div>
+              <a href="./exercises/mysql_3_9_3.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>App settings</h4>
+              <ul>
+                <li>Insert into the App.settings table the following values:</li>
+                <li>(99, DEFAULT, "horizontal", "2015-09-15 04:01:04")</li>
+              </ul>
+            </div>
+            <div>
+              <a href="./exercises/mysql_3_11_1.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Updating App table</h4>
+              <ul>
+                <li>Rename the settings table to be: user_settings</li>
+              </ul>
+            </div>
+            <div>
+              <a href="./exercises/mysql_3_11_2.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3>Deleting databases, dropping tables and deleting data (Grade: 100%)</h3>
+        <ul>
+          <li>
+            <div>
+              <h4>Deleting values</h4>
+              <p>USE the bank database and complete the following tasks using the mysql prompt:</p>
+              <ol>
+                <li>Delete the records where user_id equals 414, from the u_accounts table.</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_4_4_4.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Omitting WHERE</h4>
+              <p>USE the bank database and complete the following tasks using the mysql prompt:</p>
+              <ol>
+                <li>Delete all the records from the users table.</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_4_4_5.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+   <!-- Footer -->
+   <footer class="wrapper style1 align-center">
+    <div class="inner">
+      <ul class="icons">
+        <li><a href="tel:+852 51139360" class="icon style2 fa-phone" alt="Call Yin Ping Lai mobile phone"><span class="label">Phone</span></a></li>
+        <li><a href="https://www.linkedin.com/in/kris-lai-29b47613a/" class="icon brands style2 fa-linkedin-in" alt="Yin Ping Lai LinkedIn profile page"><span class="label">LinkedIn</span></a></li>
+        <li><a href="https://github.com/yinpinglai" class="icon brands style2 fa-github" alt="Yin Ping Lai Github profile page"><span class="label">Github</span></a></li>
+        <li><a href="mailto:ypinglai29@gmail.com" class="icon style2 fa-envelope" alt="Send email to ypinglai29@gmail.com"><span class="label">Email</span></a></li>
+      </ul>
+      <p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../../../assets/js/jquery.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrollex.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrolly.min.js"></script>
+  <script src="../../../../assets/js/browser.min.js"></script>
+  <script src="../../../../assets/js/breakpoints.min.js"></script>
+  <script src="../../../../assets/js/util.js"></script>
+  <script src="../../../../assets/js/main.js"></script>
+</body>
+</html>

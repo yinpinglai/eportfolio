@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../../../../assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="../../../../assets/css/noscript.css" /></noscript>
+  <title>Codio Activity 1 & Seminar 2 Preparation</title>
+</head>
+<body class="is-preload">
+  <div id="wrapper">
+    <div class="content-wrapper">
+      <h2>Codio Activity 1 & Seminar 2 Preparation</h2>
+      <hr />
+      <br />
+      <div>
+        <h3>1 Codio Activity</h3>
+        <div>
+          <h4>1.1 Classes and Objects Exercises (Grade: 100%)</h4>
+          <ul>
+            <li>
+              <div>
+                <h4>Exercise 1</h4>
+                <div>Write a definition for a class named Circle with attributes center and radius, where center is a Point object and radius is a number.</div>
+                <div>Instantiate a Circle object that represents a circle with its center at   (150,100)  and radius 75.</div>
+                <div>Write a function named point_in_circle that takes a Circle and a Point and returns True if the Point lies in or on the boundary of the circle.</div>
+                <div>Write a function named rect_in_circle that takes a Circle and a Rectangle and returns True if the Rectangle lies entirely in or on the boundary of the circle.</div>
+                <div>Write a function named rect_circle_overlap that takes a Circle and a Rectangle and returns True if any of the corners of the Rectangle fall inside the circle. Or as a more challenging version, return True if any part of the Rectangle falls inside the circle.</div>
+              </div>
+              <div>
+                <h4>My Solution</h4>
+                <a href="./exercises/15_1_solution.py" alt="The solution of the exercise 1" target="_blank">The solution of the exercise 1</a>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h4>Exercise 2</h4>
+                <div>Write a function called draw_rect that takes a Turtle object and a Rectangle and uses the Turtle to draw the Rectangle. See Chapter 4 for examples using Turtle objects.</div>
+                <div>Write a function called draw_circle that takes a Turtle and a Circle and draws the Circle.</div>
+              </div>
+              <div>
+                <h4>My Solution</h4>
+                <a href="./exercises/15_2_solution.py" alt="The solution of the exercise 2" target="_blank">The solution of the exercise 2</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4>1.2 Class Functions and Class Methods (Grade: 100%)</h4>
+          <ul>
+            <li>
+              <div>
+                <h4>Exercise 1</h4>
+                <div>Code examples from this chapter are available from http://thinkpython2.com/code/Time1.py; solutions to the exercises are available from http://thinkpython2.com/code/Time1_soln.py.</div>
+                <div>Write a function called mul_time that takes a Time object and a number and returns a new Time object that contains the product of the original Time and the number.</div>
+                <div>Then use mul_time to write a function that takes a Time object that represents the finishing time in a race, and a number that represents the distance, and returns a Time object that represents the average pace (time per mile).</div>
+              </div>
+              <div>
+                <h4>My Solution</h4>
+                <a href="./exercises/16_1_solution.py" alt="The solution of the exercise 1" target="_blank">The solution of the exercise 1</a>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h4>Exercise 2</h4>
+                <div>The datetime module provides time objects that are similar to the Time objects in this chapter, but they provide a rich set of methods and operators. Read the documentation at http://docs.python.org/3/library/datetime.html.</div>
+                <ol>
+                  <li>Use the datetime module to write a program that gets the current date and prints the day of the week.</li>
+                  <li>Write a program that takes a birthday as input and prints the user’s age and the number of days, hours, minutes and seconds until their next birthday.</li>
+                  <li>For two people born on different days, there is a day when one is twice as old as the other. That’s their Double Day. Write a program that takes two birthdays and computes their Double Day.</li>
+                  <li>For a little more challenge, write the more general version that computes the day when one person is   n  times older than the other.</li>
+                </ol>
+              </div>
+              <div>
+                <h4>My Solution</h4>
+                <a href="./exercises/16_2_solution.py" alt="The solution of the exercise 2" target="_blank">The solution of the exercise 2</a>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h4>Exercise 3</h4>
+                <div>Using Time2.py, change the attributes of Time to be a single integer representing seconds since midnight. Then modify the methods (and the function int_to_time) to work with the new implementation. You should not have to modify the test code in main. When you are done, the output should be the same as before.</div>
+              </div>
+              <div>
+                <h4>My Solution</h4>
+                <a href="./exercises/17_1_solution.py" alt="The solution of the exercise 3" target="_blank">The solution of the exercise 3</a>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h4>Exercise 4</h4>
+                <div>This exercise is a cautionary tale about one of the most common, and difficult to find, errors in Python. Write a definition for a class named Kangaroo with the following methods:</div>
+                <ol>
+                  <li>An __init__ method that initializes an attribute named pouch_contents to an empty list.</li>
+                  <li>A method named put_in_pouch that takes an object of any type and adds it to pouch_contents.</li>
+                  <li>A __str__ method that returns a string representation of the Kangaroo object and the contents of the pouch.</li>
+                </ol>
+                <div>Test your code by creating two Kangaroo objects, assigning them to variables named kanga and roo, and then adding roo to the contents of kanga’s pouch.</div>
+                <div>View BadKangaroo.py. It contains a solution to the previous problem with one big, nasty bug. Find and fix the bug.                </div>
+              </div>
+              <div>
+                <h4>My Solution</h4>
+                <a href="./exercises/17_2_solution.py" alt="The solution of the exercise 4" target="_blank">The solution of the exercise 4</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4>1.3 Inheritance</h4>
+          <ul>
+            <li>
+              <div>
+                <h4>Exercise 1</h4>
+                <div>For the following program, draw a UML class diagram that shows these classes and the relationships among them.</div>
+                <a href="./exercises/18_1_question.py" alt="The question of the exercise 1">The question of the exercise 1</a>
+              </div>
+              <div>
+                <h4>My Solution</h4>
+                <img src="./exercises/18_1_solution.png" /> <br />
+                <a href="./exercises/18_1_solution.png" alt="The solution of the exercise 1" target="_blank">The solution of the exercise 1</a>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h4>Exercise 2</h4>
+                <div>Write a Deck method called deal_hands that takes two parameters, the number of hands and the number of cards per hand. It should create the appropriate number of Hand objects, deal the appropriate number of cards per hand, and return a list of Hands.</div>
+              </div>
+              <div>
+                <h4>My Solution</h4>
+                <a href="./exercises/18_2_solution.py" alt="The solution of the exercise 2" target="_blank">The solution of the exercise 2</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4>1.4 Encapsulation</h4>
+          <ul>
+            <li>
+              <div>
+                <h4>Exercise 1</h4>
+                <div>Define the Country class which has attributes for name, capital, population, and continent. Please use the Python convention for making these attributes private.</div>
+                <b>Expected Output</b><br />
+                <div>Initialize an object of the Country class as follows:</div>
+                <div>my_country = Country('France', 'Paris', 67081000, 'Europe')</div>
+                <table>
+                  <tr>
+                    <th>Task</th>
+                    <th>Output</th>
+                  </tr>
+                  <tr>
+                    <td>Print the name attribute</td>
+                    <td>France</td>
+                  </tr>
+                  <tr>
+                    <td>Print the capital attribute</td>
+                    <td>Paris</td>
+                  </tr>
+                  <tr>
+                    <td>Print the population attribute</td>
+                    <td>67081000</td>
+                  </tr>
+                  <tr>
+                    <td>Print the continent attribute</td>
+                    <td>Europe</td>
+                  </tr>
+                </table>
+                <b>Important</b><br />
+                <div>You do not need to create any getters or setters; just follow the Python convention for private attributes.</div>
+              </div>
+              <div>
+                <h4>My Solution</h4>
+                <a href="./exercises/19_1_solution.py" alt="The solution of the exercise 1" target="_blank">The solution of the exercise 1</a>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h4>Exercise 2</h4>
+                <div>Define the Artist class which has attributes for name, medium, style, and famous_artwork. Do not use the Python convention to make these attributes.</div>
+                <b>Expected Output</b><br />
+                <div>Initialize an object of the Artist class as follows:</div>
+                <div>my_artist = Artist('Bill Watterson', 'ink and paper', 'cartoons', 'Calvin and Hobbes')</div>
+                <table>
+                  <tr>
+                    <th>Task</th>
+                    <th>Output</th>
+                  </tr>
+                  <tr>
+                    <td>Print the name attribute</td>
+                    <td>Error Message</td>
+                  </tr>
+                  <tr>
+                    <td>Print the medium attribute</td>
+                    <td>Error Message</td>
+                  </tr>
+                  <tr>
+                    <td>Print the style attribute</td>
+                    <td>Error Message</td>
+                  </tr>
+                  <tr>
+                    <td>Print the famous artwork attribute</td>
+                    <td>Error Message</td>
+                  </tr>
+                  <tr>
+                    <td>Print _Artist__name</td>
+                    <td>Bill Watterson</td>
+                  </tr>
+                  <tr>
+                    <td>Print _Artist__medium</td>
+                    <td>ink and paper</td>
+                  </tr>
+                  <tr>
+                    <td>Print _Artist__style</td>
+                    <td>cartoons</td>
+                  </tr>
+                  <tr>
+                    <td>Print _Artist__famous_artwork</td>
+                    <td>Calvin and Hobbes</td>
+                  </tr>
+                </table>
+                <b>Important</b><br />
+                <div>You do not need to create any getters or setters; do not follow the Python convention for private attributes.</div>
+              </div>
+              <div>
+                <h4>My Solution</h4>
+                <a href="./exercises/19_2_solution.py" alt="The solution of the exercise 2" target="_blank">The solution of the exercise 2</a>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h4>Exercise 3</h4>
+                <div>Define the BankAccount class which has attributes for checking and savings. Use the Python convention to make these attributes private. Create the getters get_checking and get_savings, and create the setters set_checking and set_savings.</div>
+                <b>Expected Output</b><br />
+                <div>Initialize an object of the BankAccount class as follows:</div>
+                <div>my_account = BankAccount()</div>
+                <table>
+                  <tr>
+                    <th>Task</th>
+                    <th>Output</th>
+                  </tr>
+                  <tr>
+                    <td>my_account.set_checking(523.48)</td>
+                    <td>N/A</td>
+                  </tr>
+                  <tr>
+                    <td>print(my_account.get_checking())</td>
+                    <td>523.48</td>
+                  </tr>
+                  <tr>
+                    <td>my_account.set_savings(386.15)</td>
+                    <td>N/A</td>
+                  </tr>
+                  <tr>
+                    <td>print(my_account.get_savings())</td>
+                    <td>386.15</td>
+                  </tr>
+                </table>
+                <b>Important</b><br />
+                <div>Do use the property decorator or function; follow the Python convention for private attributes.</div>
+              </div>
+              <div>
+                <h4>My Solution</h4>
+                <a href="./exercises/19_3_solution.py" alt="The solution of the exercise 3" target="_blank">The solution of the exercise 3</a>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h4>Exercise 4</h4>
+                <div>Define the Dancer class which has attributes for name, nationality, and style. Use the Python convention to make these attributes private. Create the getters and setters using the property function.</div>
+                <b>Expected Output</b><br />
+                <div>Initialize an object of the Dancer class as follows:</div>
+                <div>my_dancer = Dancer("Savion Glover", "American", "tap")</div>
+                <table>
+                  <tr>
+                    <th>Task</th>
+                    <th>Output</th>
+                  </tr>
+                  <tr>
+                    <td>print(my_dancer.name)</td>
+                    <td>Savion Glover</td>
+                  </tr>
+                  <tr>
+                    <td>print(my_dancer.nationality)</td>
+                    <td>American</td>
+                  </tr>
+                  <tr>
+                    <td>print(my_dancer.style)</td>
+                    <td>tap</td>
+                  </tr>
+                  <tr>
+                    <td>my_dancer.name = 'Anna Pavlova'</td>
+                    <td>N/A</td>
+                  </tr>
+                  <tr>
+                    <td>my_dancer.nationality = 'Russian'</td>
+                    <td>N/A</td>
+                  </tr>
+                  <tr>
+                    <td>my_dancer.style = 'ballet'</td>
+                    <td>N/A</td>
+                  </tr>
+                  <tr>
+                    <td>print(my_dancer.name)</td>
+                    <td>Anna Pavlova</td>
+                  </tr>
+                  <tr>
+                    <td>print(my_dancer.nationality)</td>
+                    <td>Russian</td>
+                  </tr>
+                  <tr>
+                    <td>print(my_dancer.style)</td>
+                    <td>ballet</td>
+                  </tr>
+                </table>
+                <b>Important</b><br />
+                <div>Use the property function; follow the Python convention for private attributes.</div>
+              </div>
+              <div>
+                <h4>My Solution</h4>
+                <a href="./exercises/19_4_solution.py" alt="The solution of the exercise 4" target="_blank">The solution of the exercise 4</a>
+              </div>
+            </li>
+            <li>
+              <h4>Exercise 5</h4>
+              <div>Define the Cyclist class which has attributes name, nationality, and nickname. Use the Python convention to make these attributes private. Create the getters and setters using the property decorator.</div>
+              <b>Expected Output</b><br />
+              <div>Initialize an object of the Cyclist class as follows:</div>
+              <div>my_cyclist = Cyclist("Greg LeMond", "American", "Le Montstre")</div>
+              <table>
+                <tr>
+                  <th>Task</th>
+                  <th>Output</th>
+                </tr>
+                <tr>
+                  <td>print(my_cyclist.name)</td>
+                  <td>Greg LeMond</td>
+                </tr>
+                <tr>
+                  <td>print(my_cyclist.nationality)</td>
+                  <td>American</td>
+                </tr>
+                <tr>
+                  <td>print(my_cyclist.nickname)</td>
+                  <td>Le Monstre</td>
+                </tr>
+                <tr>
+                  <td>my_cyclist.name = "Eddy Merckx"</td>
+                  <td>N/A</td>
+                </tr>
+                <tr>
+                  <td>my_cyclist.nationality = "Belgian"</td>
+                  <td>N/A</td>
+                </tr>
+                <tr>
+                  <td>my_cyclist.nickname = "The Cannibal"</td>
+                  <td>N/A</td>
+                </tr>
+                <tr>
+                  <td>print(my_cyclist.name)</td>
+                  <td>Eddy Merckx</td>
+                </tr>
+                <tr>
+                  <td>print(my_cyclist.nationality)</td>
+                  <td>Belgian</td>
+                </tr>
+                <tr>
+                  <td>print(my_cyclist.nickname)</td>
+                  <td>The Cannibal</td>
+                </tr>
+              </table>
+              <b>Important</b><br />
+              <div>Use the property decorator; follow the Python convention for private attributes.</div>
+              <div>
+                <h4>My Solution</h4>
+                <a href="./exercises/19_5_solution.py" alt="The solution of the exercise 5" target="_blank">The solution of the exercise 5</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4>1.5 Polymorphism</h4>
+          <ul>
+            <li>
+              <div>
+                <h4>Exercise 1</h4>
+                <div>Use the Lottery class to the left as the parent class. Create the PowerBall class as a child class of Lottery. Override the shuffle method so that it returns a list of six random integers between 1 and 99.</div>
+              </div>
+              <div>
+                <h4>My Solution</h4>
+                <a href="./exercises/20_1_solution.py" alt="The solution of the exercise 1" target="_blank">The solution of the exercise 1</a>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h4>Exercise 2</h4>
+                <div>Complete the Airplane and Train classes so that when an instance of each is passed to the passengers function, they will return the total number of passengers on board.</div>
+              </div>
+              <div>
+                <h4>My Solution</h4>
+                <a href="./exercises/20_2_solution.py" alt="The solution of the exercise 2" target="_blank">The solution of the exercise 2</a>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h4>Exercise 3</h4>
+                <div>Create the class Characters which has the attribute phrases which is a list of strings passed as a parameter. Overload the <, >, and == operators so that you can make comparisons based on the total number of characters in the string.</div>
+                <b>Expected Output</b><br />
+                <div>If you were to run the following code with your class, the output would be True, False, and True.</div>
+              </div>
+              <div>
+                <h4>My Solution</h4>
+                <a href="./exercises/20_3_solution.py" alt="The solution of the exercise 3" target="_blank">The solution of the exercise 3</a>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h4>Exercise 4</h4>
+                <div>Create the Median that has the method calculate_median that calculates the median of the integers passed to the method. Use method overloading so that this method can accept anywhere from two to five parameters.</div>
+                <table>
+                  <tr>
+                    <th>Method Call</th>
+                    <th>Return Value</th>
+                  </tr>
+                  <tr>
+                    <td>m.calculate_median(3, 5, 1, 4, 2)</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>m.calculate_median(8, 6, 4, 2)</td>
+                    <td>5.0</td>
+                  </tr>
+                  <tr>
+                    <td>m.calculate_median(9, 3, 7)</td>
+                    <td>7</td>
+                  </tr>
+                  <tr>
+                    <td>m.calculate_median(5, 2)</td>
+                    <td>3.5</td>
+                  </tr>
+                </table>
+              </div>
+              <div>
+                <h4>My Solution</h4>
+                <a href="./exercises/20_4_solution.py" alt="The solution of the exercise 4" target="_blank">The solution of the exercise 4</a>
+              </div>
+            </li>
+            <li>
+              <b>
+                <h4>Exercise 5</h4>
+                <div>The Substitute class reads a text file and replaces every fifth word with the string HELLO.</div>
+                <div>Create the class Stars which is a child class of Substitute. Then override the swap_words method so that every third word is replaced by a series of *. If the word has three letters then it should be replaced with ***. The number of * should match the number of characters in the word. Write the new string to self.answer_file.</div>
+                <b>Important</b><br />
+                <div>Keep the following things in mind as you write your code. Changes should only be made to the Stars class; do not alter the code for the file variables and the Substitute class.</div>
+                <ul>
+                  <li>The source_file attribute represents the file you will read.</li>
+                  <li>The answer_file attribute represents the file to which you will write your new text.</li>
+                  <li>The string_to_list method converts the string (the text file) into a 2D list. Each inner list represents a sentence. The elements of each inner list are the words that make up that sentence.</li>
+                  <li>The list_to_string method converts the 2D list back into a string.</li>
+                  <li>When you override the swap_words methods, be sure to start with string_to_list and use list_to_string before writing to the file. </li>
+                  <li>The text used for this activity are the first four sentences of Jane Austen’s Pride and Prejudice.</li>
+                </ul>
+                <div>
+                  <h4>My Solution</h4>
+                  <a href="./exercises/20_5_solution.py" alt="The solution of the exercise 5" target="_blank">The solution of the exercise 5</a>
+                </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- Footer -->
+   <footer class="wrapper style1 align-center">
+    <div class="inner">
+      <ul class="icons">
+        <li><a href="tel:+852 51139360" class="icon style2 fa-phone" alt="Call Yin Ping Lai mobile phone"><span class="label">Phone</span></a></li>
+        <li><a href="https://www.linkedin.com/in/kris-lai-29b47613a/" class="icon brands style2 fa-linkedin-in" alt="Yin Ping Lai LinkedIn profile page"><span class="label">LinkedIn</span></a></li>
+        <li><a href="https://github.com/yinpinglai" class="icon brands style2 fa-github" alt="Yin Ping Lai Github profile page"><span class="label">Github</span></a></li>
+        <li><a href="mailto:ypinglai29@gmail.com" class="icon style2 fa-envelope" alt="Send email to ypinglai29@gmail.com"><span class="label">Email</span></a></li>
+      </ul>
+      <p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../../../assets/js/jquery.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrollex.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrolly.min.js"></script>
+  <script src="../../../../assets/js/browser.min.js"></script>
+  <script src="../../../../assets/js/breakpoints.min.js"></script>
+  <script src="../../../../assets/js/util.js"></script>
+  <script src="../../../../assets/js/main.js"></script>
+</body>
+</html>
