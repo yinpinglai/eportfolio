@@ -371,6 +371,361 @@
               <a href="./exercises/mysql_4_4_5.sql" alt="My Solution" target="_blank">My Solution</a>
             </div>
           </li>
+          <li>
+            <div>
+              <h4>Deleting columns</h4>
+              <p>USE the bank database and complete the following tasks using the mysql prompt:</p>
+              <ol>
+                <li>Remove the cc_num (credit card number) column from the u_accounts table.</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_4_6_1.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Deleting tables</h4>
+              <p>USE the bank database and complete the following tasks using the mysql prompt:</p>
+              <ol>
+                <li>Delete the entire liabilities table.</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_4_7_1.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Truncating tables</h4>
+              <p>USE the bank database and complete the following tasks using the mysql prompt:</p>
+              <ol>
+                <li>Truncate the assets table.</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_4_8_1.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Dropping databases</h4>
+              <p>Using the mysql prompt:</p>
+              <ol>
+                <li>Drop the entire restaurant database</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_4_9_1.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Deleting all table records</h4>
+              <p>USE the RE database and complete the following tasks using the mysql prompt:</p>
+              <ol>
+                <li>Delete all the records from the catalog table but not the table itself</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_4_10_1.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Deleting table columns</h4>
+              <p>USE the RE database and complete the following tasks using the mysql prompt:</p>
+              <ol>
+                <li>Remove the property_id column from the clients table</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_4_10_2.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3>Constraints and KeysExternal tool (Grade: 100%)</h3>
+        <ul>
+          <li>
+            <div>
+              <h4>SQL Constraints</h4>
+              <b>Select the list of that contains only valid SQL constraints:</b><br />
+              <p>NOT NULL, FOREIGN KEY, PRIMARY KEY</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Defining the reference table</h4>
+              <p>Using the college database, complete the following tasks (use either a single-line or a multi-line SQL statement):</p>
+              <ol>
+                <li>Create a courses table with this definition (try using a multi-line SQL statement):</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_5_5_2.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Defining the foreign key</h4>
+              <p>Using the college database, complete the following tasks (use either a single-line or a multi-line SQL statement):</p>
+              <ol>
+                <li>Create a classrooms table with this definition (try using a multi-line SQL statement):</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_5_5_3.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>SQL JOIN</h4>
+              <ol>
+                <li>Use the college database</li>
+                <li>Write a SQL SELECT statement that joins the data from the college.classrooms table and the college.courses table together.</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_5_6_3.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>SQL Left outer join</h4>
+              <ol>
+                <li>Use the college database</li>
+                <li>Write a SQL LEFT OUTER JOIN statement that joins the data from the college.classrooms table and the college.courses table together.</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_5_7_2.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>SQL right outer join</h4>
+              <ol>
+                <li>Use the college database</li>
+                <li>Write a SQL RIGHT OUTER JOIN statement that joins the data from the college.classrooms table and the college.courses table together.</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_5_8_2.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Joining specific columns</h4>
+              <ol>
+                <li>Use the college database</li>
+                <li>Write a SQL LEFT OUTER JOIN statement that joins only the course_id column from the college.classrooms table and the id column of the college.courses table together.</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_5_9_1.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Altering tables to add foreign keys</h4>
+              <p>Using the college database (use either a single-line or a multi-line SQL statement):</p>
+              <ol>
+                <li>Write a SQL ALTER TABLE statement that adds a classroom_id column to the college.students table.
+                  This new column should be an INTEGER data type with a max. size of 3 digits, UNSIGNED, it can be NULL and it should work as a FOREIGN KEY that uses as a reference the id column of the college.classrooms table.</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_5_10_3.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>A simple blog database</h4>
+              <ol>
+                <li>Use the blog database</li>
+                <li>Write a SQL RIGHT OUTER JOIN statement that joins the user_id column from the blog.posts table, the name column of the blog.users table and the body column of the blog.posts table together.</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_5_11_1.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Defining the comments table</h4>
+              <p>Using the blog database, complete the following tasks:</p>
+              <ol>
+                <li>Create a comments table with this definition (use either a single-line or a multi-line SQL statement):</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_5_11_2.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Altering the comments table</h4>
+              <p>Using the blog database (use either a single-line or a multi-line SQL statement):</p>
+              <ol>
+                <li>Write a SQL ALTER TABLE statement that adds a post_id column to the blog.comments table.
+                  This new column should be an INTEGER data type with a max. size of 3 digits, UNSIGNED, it should be NOT NULL and it should work as a FOREIGN KEY that uses as a reference the id column of the blog.posts table.</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_5_11_3.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3>Aggregate functionsExternal tool (Grade: 91%)</h3>
+        <ul>
+          <li>
+            <div>
+              <h4>SQL MIN()</h4>
+              <p>Write each of the following tasks as a SQL statement in a new line:</p>
+              <ol>
+                <li>Select the product with the least stock from the e_store.products table.</li>
+                <li>Select the product with the least stock from the e_store.products table aliasing the column name as: min_stock.</li>
+                <li>Select the product with the least stock from the e_store.products table where the id is greater than 3. Alias the column name as: min_stock.</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_6_4_3.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>SQL MAX()</h4>
+              <p>Write each of the following tasks as a SQL statement in a new line:</p>
+              <ol>
+                <li>Select the newest product from the e_store.products table. Alias the column name as: newest_product.</li>
+                <li>Select the oldest product from the e_store.products table. Alias the column name as: oldest_product.</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_6_5_1.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Multiple functions</h4>
+              <p>Write each of the following tasks as a SQL statement in a new line:</p>
+              <ol>
+                <li>In a single SELECT query, from the e_store.products table:
+                  Display the product with the least stock aliasing the column name as: least_stock, the newest product aliasing the column name as: newest_product and the most expensive product aliasing the column name as: product_max_price.</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_6_6_1.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>SQL JOIN</h4>
+              <p>Write each of the following tasks as a SQL statement in a new line:</p>
+              <ol>
+                <li>Use the e_store database</li>
+                <li>Write a SELECT - JOIN query that displays the following table:</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_6_7_2.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>SQL SUM()</h4>
+              <p>Write each of the following tasks as a SQL statement in a new line:</p>
+              <ol>
+                <li>Use the e_store database</li>
+                <li>Select the total stock of all products in the products table. Alias the column name as total_stock. The resulting table should look like this:</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_6_7_4.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>SQL COUNT()</h4>
+              <p>Write each of the following tasks as a SQL statement in a new line:</p>
+              <ol>
+                <li>Use the e_store database</li>
+                <li>Select the total amount of products in the products table. Alias the column name as total_product_count. The resulting table should look like this:</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_6_7_6.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>SQL Average</h4>
+              <p>Write each of the following tasks as a SQL statement in a new line:</p>
+              <ol>
+                <li>Use the e_store database</li>
+                <li>Get the average rating of product_id 4. Alias the average result as: avg_rating.
+                  The result should look like this:</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_6_7_8.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>SQL AVG()</h4>
+              <p>Write each of the following tasks as a SQL statement in a new line:</p>
+              <ol>
+                <li>Use the e_store database</li>
+                <li>Display the average star rating of the product_id = 4 using the AVG() SQL function.</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_6_7_10.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>SQL Group By</h4>
+              <p>Write each of the following tasks as a SQL statement in a new line:</p>
+              <ol>
+                <li>Use the e_store database</li>
+                <li>Join the products and the reviews tables.</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_6_9_5.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>SUM() and COUNT()</h4>
+              <p>Write each of the following tasks as a SQL statement in a new line:</p>
+              <ol>
+                <li>Select the total stock and the total products from the e_store.products table in a single query. Alias the result as total_stock and total_count respectively.</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_6_10_1.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h4>Group By - Having</h4>
+              <p>Write each of the following tasks as a SQL statement in a new line:</p>
+              <ol>
+                <li>Use the e_store database</li>
+                <li>Join the products and the reviews in a SELECT query.</li>
+              </ol>
+            </div>
+            <div>
+              <a href="./exercises/mysql_6_10_2.sql" alt="My Solution" target="_blank">My Solution</a>
+            </div>
+          </li>
         </ul>
       </div>
     </div>

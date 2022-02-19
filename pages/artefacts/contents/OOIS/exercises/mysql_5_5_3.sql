@@ -1,0 +1,8 @@
+USE college;
+CREATE TABLE college (
+  id INT(3) UNSINGED NOT NULL DEFAULT NULL auto_increment,
+  room_num INT(4) UNSINGED NOT NULL UNIQUE DEFAULT NULL,
+  course_id INT(2) UNSINGED,
+  PRIMARY KEY (id),
+  FOREIGN KEY (course_id) REFERENCES course(id)
+) AUTO_INCREMENT = 1;

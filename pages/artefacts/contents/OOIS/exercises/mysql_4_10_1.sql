@@ -1,0 +1,2 @@
+USE RE;
+TRUNCATE TABLE catalog;

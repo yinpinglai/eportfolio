@@ -1,0 +1,93 @@
+------ Task 1: Create modules, students, and links tables ------
+CREATE TABLE modules (
+  code VARCHAR(8) NOT NUL,
+  name VARCHAR(255) NOT NULL,
+  PRIMARY KEY (code)
+);
+
+CREATE TABLE students (
+  id INT(6) UNSIGNED NOT NULL auto_increment,
+  forename VARCHAR(20) NOT NULL,
+  surname VARCHAR(20) NOT NULL,
+  PRIMARY KEY (id)
+) AUTO_INCREMENT = 1;
+
+CREATE TABLE students_grades (
+  result_id INT(6) UNSIGNED NOT NULL auto_increment,
+  student_id INT(6) NOT NULL,
+  module_code VARCHAR(8) NOT NUL,
+  grade int(11) DEFAULT NULL,
+  PRIMARY KEY (result_id),
+  FOREIGN KEY student_id REFERENCES students(id),
+  FOREIGN KEY module_code REFERENCES modules(code)
+) AUTO_INCREMENT = 1;
+
+
+------- Task 2: add a new template -----------
+search_module.html
+
+<form method="GET" action="/results">
+  <label for="module_code">Module Code:</label>
+  <input type="text" id="module_code" name="module_code"><br><br>
+  <input type="submit" value="Submit">
+</form>
+
+{% if module_grade_list | length > 0 %}
+  <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Student Name</th>
+            <th scope="col">Grade</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for module_grade in module_grade_list %}
+            <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{module_grade.name}}</td>
+                <td>{{module_grade.grade}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+
+----- Task 3: Update the server code --------
+from flask import Flask, request, render_template
+from flask_mysqldb import MySQL
+
+app = Flask(__name__)
+
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = 'codio'
+
+app.config['MYSQL_DB'] = 'students'
+mysql = MySQL(app)
+
+@app.route('/')
+@app.route('/index')
+def index():
+  query = "SELECT scores from grades;"
+  cursor.execute(query)
+  results = cursor.fetchall()
+  cursor.close()
+  return render_template('index.html', scores=results)
+
+@app.route('/results')
+def module_list():
+  args = request.args
+  module_code = args['module_code'] if 'module_code' in args else None
+  if module_code is None:
+    return render_template('module.html')
+  
+  query = "SELECT SG.student_id, SG.grade, S.name FROM students_grades as SG WHERE module_code = '" + module_code + "' JOIN students AS S ON SG.student_id = S.id;"
+  cursor.execute(query)
+  module_grade_list = cursor.fetchall()
+  cursor.close()
+  return render_template('module.html', module_grade_list=module_grade_list)
+
+if __name__ == '__main__':
+  app.run(host='0.0.0.0')
+

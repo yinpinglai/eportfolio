@@ -1,0 +1,4 @@
+USE blog;
+ALTER TABLE comments
+ADD post_id INT(3) UNSIGNED NOT NULL
+FOREIGN KEY post_id REFERENCES post(id);
