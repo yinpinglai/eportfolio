@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../../../../assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="../../../../assets/css/noscript.css" /></noscript>
+  <title>Codio Activity - Exploring Python tools and features</title>
+</head>
+<body class="is-preload">
+  <div id="wrapper">
+    <div class="content-wrapper">
+      <h2>Codio Activity - Exploring Python tools and features</h2>
+      <hr />
+      <br />
+      <div>
+        <h3>Part I</h3>
+        <div>This is the code in bufoverflow.c (also available in the Codio workspace):</div>
+        <img src="./images/overflow.c.png" alt="Overflow.c" width="50%" />
+        <div>Now compile and run the code. To test it, enter your first name (or at least the first 8 characters of it) you should get the output which is just your name repeated back to you.</div>
+        <div>Run the code a second time (from the command window this can be achieved by entering ./bufoverflow on the command line). This time, enter a string of 10 or more characters.</div>
+        <ul>
+          <li>What happens?</li>
+          <p>The program is crashed.</p>
+          <li>What does the output message mean?</li>
+          <p>The program was terminated because the stack smashing event has been detected. This error is against the buffer overflow error. The system terminates the program when this error has been detected.</p>
+        </ul>
+      </div>
+      <div>
+        <h3>Part II</h3>
+        <div>Now carry out a comparison of this code with one in Python (Buffer Overflow in Python), following these instructions:</div>
+        <div>In the Codio workspace, you will be using the file called Overflow.py:</div>
+        <img src="./images/overflow.py.png" alt="Overflow.py" width="30%" />
+        <ul>
+          <li>Run your code using: Python overflow.py (or use the codio rocket icon)</li>
+          <li>What is the result?</li>
+          <p>IndexError: list assignment index out of range</p>
+          <li>Read about Pylint at http://pylint.pycqa.org/en/latest/tutorial.html</li>
+          <li>Install pylint using the following commands:</li>
+          <p>pip install pylint (in the command shell/ interpreter)</p>
+          <li>Run pylint on one of your files and evaluate the output:</li>
+          <p>pylint your_file</p>
+          <li>(Make sure you are in the directory where your file is located before running Pylint)</li>
+          <li>What is the result? Does this tell you how to fix the error above?</li>
+          <ul>
+            <li>************* Module Overflow</li>
+            <li>Overflow.py:4:0: C0303: Trailing whitespace (trailing-whitespace)</li>
+            <li>Overflow.py:5:0: C0304: Final newline missing (missing-final-newline)</li>
+            <li>Overflow.py:1:0: C0103: Module name "Overflow" doesn't conform to snake_case naming style (invalid-name)</li>
+            <li>Overflow.py:1:0: C0114: Missing module docstring (missing-module-docstring)</li>
+          </ul>
+          <p>The result doesn't tell me how to fix the error above. It provides recommendations of the coding styling instead of providing hints on fixing the error.</p>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+   <!-- Footer -->
+   <footer class="wrapper style1 align-center">
+    <div class="inner">
+      <ul class="icons">
+        <li><a href="tel:+852 51139360" class="icon style2 fa-phone" alt="Call Yin Ping Lai mobile phone"><span class="label">Phone</span></a></li>
+        <li><a href="https://www.linkedin.com/in/kris-lai-29b47613a/" class="icon brands style2 fa-linkedin-in" alt="Yin Ping Lai LinkedIn profile page"><span class="label">LinkedIn</span></a></li>
+        <li><a href="https://github.com/yinpinglai" class="icon brands style2 fa-github" alt="Yin Ping Lai Github profile page"><span class="label">Github</span></a></li>
+        <li><a href="mailto:ypinglai29@gmail.com" class="icon style2 fa-envelope" alt="Send email to ypinglai29@gmail.com"><span class="label">Email</span></a></li>
+      </ul>
+      <p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../../../assets/js/jquery.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrollex.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrolly.min.js"></script>
+  <script src="../../../../assets/js/browser.min.js"></script>
+  <script src="../../../../assets/js/breakpoints.min.js"></script>
+  <script src="../../../../assets/js/util.js"></script>
+  <script src="../../../../assets/js/main.js"></script>
+</body>
+</html>
