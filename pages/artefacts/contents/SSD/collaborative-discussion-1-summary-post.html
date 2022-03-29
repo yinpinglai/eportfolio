@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../../../../assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="../../../../assets/css/noscript.css" /></noscript>
+  <title>Collaborative Discussion 1 - Summary Post</title>
+</head>
+<body class="is-preload">
+  <div id="wrapper">
+    <div class="content-wrapper">
+      <h2>Collaborative Discussion 1 - Summary Post</h2>
+      <hr />
+      <br />
+      <p>The Cross-Site-Scripting (XSS) attack is a common technique to inject malicious JavaScript into the victim’s browser and execute suspicious code [1]. The below figure dictate the flow of how the XSS attack works. For example, attackers will ask the victim to log in to their bank account. After the victim gets authorised from the bank, attackers can ascertain sensitive information from the end user’s browser, such as tokens, sessions, and cookies. So, attackers can disguise to make a valid transfer request to the bank with the client’s authorised session.</p>
+      <img src="./images/XSS Attack.png" alt="XSS Attack flow chart" /> <br />
+      <b>  Figure 1 – The flow of the Cross-Site-Scripting attack</b><br /><br />
+      <p>The OWASP foundation (N.D.) indicated that we should never trust the information sent from the client side with no validation on those data [2]. It also provides various recommendations to mitigate the impact of the XSS attack. We focus on the rule “Use HTTPOnly cookie flag” for the above case. When setting cookies with a specified “HTTPOnly” flag, the client-side script will get an empty string instead of the actual value from cookies [3]. As a result, the XSS attack will fail to ascertain the sensitive information from the cookies.</p>
+      <p>To mitigate being suffering from the XSS attack, there are serval ways to do that. Mark S. (N.D.) suggested a brunch of strategies to prevent and defend it, such as validating, filtering, and sanitising the client side’s data and never direct display the HTML code[4]. It is no doubt that during the development stage, developers should validate and never trust the data sent from the client side. It can keep away from being suffering from the XSS attack.</p>
+      <h3>References</h3>
+      <ul style="list-style: none;">
+        <li>[1] PwnFunction. Mar 2020. “Cross-Site Scripting (XSS) Explained”. [Online] Available at: <a href="https://www.youtube.com/watch?v=EoaDgUgS6QA" target="_blank">https://www.youtube.com/watch?v=EoaDgUgS6QA</a> [Accessed on 13 Mar 2022].</li>
+        <li>[2] The OWASP foundation. (N.D.). “Cross Site Scripting Prevention Cheat Sheet”. [Online] Available at: <a href="https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html" target="_blank">https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html</a> [Accessed on 13 Mar 2022].</li>
+        <li>[3] The OWASP foundation. (N.D.). “HttpOnly”. [Online] Available at: <a href="https://owasp.org/www-community/HttpOnly" target="_blank">https://owasp.org/www-community/HttpOnly</a> [Accessed on 13 Mar 2022].</li>
+        <li>[4] Mark Stone, N.D., “How to mitigate cross-site scripting”. [Online] Available at: <a href="https://www.verizon.com/business/resources/articles/s/how-to-mitigate-cross-site-scripting/" target="_blank">https://www.verizon.com/business/resources/articles/s/how-to-mitigate-cross-site-scripting/</a> [Accessed on 29 Mar 2022].</li>
+      </ul>
+    </div>
+  </div>
+
+   <!-- Footer -->
+   <footer class="wrapper style1 align-center">
+    <div class="inner">
+      <ul class="icons">
+        <li><a href="tel:+852 51139360" class="icon style2 fa-phone" alt="Call Yin Ping Lai mobile phone"><span class="label">Phone</span></a></li>
+        <li><a href="https://www.linkedin.com/in/kris-lai-29b47613a/" class="icon brands style2 fa-linkedin-in" alt="Yin Ping Lai LinkedIn profile page"><span class="label">LinkedIn</span></a></li>
+        <li><a href="https://github.com/yinpinglai" class="icon brands style2 fa-github" alt="Yin Ping Lai Github profile page"><span class="label">Github</span></a></li>
+        <li><a href="mailto:ypinglai29@gmail.com" class="icon style2 fa-envelope" alt="Send email to ypinglai29@gmail.com"><span class="label">Email</span></a></li>
+      </ul>
+      <p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../../../assets/js/jquery.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrollex.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrolly.min.js"></script>
+  <script src="../../../../assets/js/browser.min.js"></script>
+  <script src="../../../../assets/js/breakpoints.min.js"></script>
+  <script src="../../../../assets/js/util.js"></script>
+  <script src="../../../../assets/js/main.js"></script>
+</body>
+</html>
