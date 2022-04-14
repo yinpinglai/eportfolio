@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../../../../assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="../../../../assets/css/noscript.css" /></noscript>
+  <title>Equivalence Testing in Python</title>
+</head>
+<body class="is-preload">
+  <div id="wrapper">
+    <div class="content-wrapper">
+      <h2>Equivalence Testing in Python</h2>
+      <hr />
+      <br />
+      <h3>Source Code</h3>
+      <pre>
+        <code>
+          <span class="c1"># CODE SOURCE: https://stackoverflow.com/questions/38924421/is-there-a-standard-way-to-partition-an-interable-into-equivalence-classes-given/38924631#38924631
+          </span>
+          <span class="k">def</span> <span class="nf">equivalence_partition</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="n">relation</span><span class="p">):</span>
+              <span class="s">"""Partitions a set of objects into equivalence classes
+          
+              Args:
+                  iterable: collection of objects to be partitioned
+                  relation: equivalence relation. I.e. relation(o1,o2) evaluates to True
+                      if and only if o1 and o2 are equivalent
+          
+              Returns: classes, partitions
+                  classes: A sequence of sets. Each one is an equivalence class
+                  partitions: A dictionary mapping objects to equivalence classes
+              """</span>
+              <span class="n">classes</span> <span>=</span> <span class="p">[]</span>
+              <span class="n">partitions</span> <span>=</span> <span class="p">{}</span>
+              <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>  <span class="c1"># for each object
+          </span>        <span class="c1"># find the class it is in
+          </span>        <span class="n">found</span> <span>=</span> <span class="bp">False</span>
+                  <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
+                      <span class="k">if</span> <span class="n">relation</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">c</span><span class="p">)),</span> <span class="n">o</span><span class="p">):</span>  <span class="c1"># is it equivalent to this class?
+          </span>                <span class="n">c</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+                          <span class="n">partitions</span><span class="p">[</span><span class="n">o</span><span class="p">]</span> <span>=</span> <span class="n">c</span>
+                          <span class="n">found</span> <span>=</span> <span class="bp">True</span>
+                          <span class="k">break</span>
+                  <span class="k">if</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>  <span class="c1"># it is in a new class
+          </span>            <span class="n">classes</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="n">o</span><span class="p">]))</span>
+                      <span class="n">partitions</span><span class="p">[</span><span class="n">o</span><span class="p">]</span> <span>=</span> <span class="n">classes</span><span class="p">[</span><span>-</span><span class="mi">1</span><span class="p">]</span>
+              <span class="k">return</span> <span class="n">classes</span><span class="p">,</span> <span class="n">partitions</span>
+          
+          
+          <span class="k">def</span> <span class="nf">equivalence_enumeration</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="n">relation</span><span class="p">):</span>
+              <span class="s">"""Partitions a set of objects into equivalence classes
+          
+              Same as equivalence_partition() but also numbers the classes.
+          
+              Args:
+                  iterable: collection of objects to be partitioned
+                  relation: equivalence relation. I.e. relation(o1,o2) evaluates to True
+                      if and only if o1 and o2 are equivalent
+          
+              Returns: classes, partitions, ids
+                  classes: A sequence of sets. Each one is an equivalence class
+                  partitions: A dictionary mapping objects to equivalence classes
+                  ids: A dictionary mapping objects to the indices of their equivalence classes
+              """</span>
+              <span class="n">classes</span><span class="p">,</span> <span class="n">partitions</span> <span>=</span> <span class="n">equivalence_partition</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="n">relation</span><span class="p">)</span>
+              <span class="n">ids</span> <span>=</span> <span class="p">{}</span>
+              <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">classes</span><span class="p">):</span>
+                  <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">c</span><span class="p">:</span>
+                      <span class="n">ids</span><span class="p">[</span><span class="n">o</span><span class="p">]</span> <span>=</span> <span class="n">i</span>
+              <span class="k">return</span> <span class="n">classes</span><span class="p">,</span> <span class="n">partitions</span><span class="p">,</span> <span class="n">ids</span>
+          
+          
+          <span class="k">def</span> <span class="nf">check_equivalence_partition</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span> <span class="n">partitions</span><span class="p">,</span> <span class="n">relation</span><span class="p">):</span>
+              <span class="s">"""Checks that a partition is consistent under the relationship"""</span>
+              <span class="k">for</span> <span class="n">o</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">partitions</span><span class="p">.</span><span class="n">items</span><span class="p">():</span>
+                  <span class="k">for</span> <span class="n">_c</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
+                      <span class="k">assert</span> <span class="p">(</span><span class="n">o</span> <span class="ow">in</span> <span class="n">_c</span><span class="p">)</span> <span>^</span> <span class="p">(</span><span class="ow">not</span> <span class="n">_c</span> <span class="ow">is</span> <span class="n">c</span><span class="p">)</span>
+              <span class="k">for</span> <span class="n">c1</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
+                  <span class="k">for</span> <span class="n">o1</span> <span class="ow">in</span> <span class="n">c1</span><span class="p">:</span>
+                      <span class="k">for</span> <span class="n">c2</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
+                          <span class="k">for</span> <span class="n">o2</span> <span class="ow">in</span> <span class="n">c2</span><span class="p">:</span>
+                              <span class="k">assert</span> <span class="p">(</span><span class="n">c1</span> <span class="ow">is</span> <span class="n">c2</span><span class="p">)</span> <span>^</span> <span class="p">(</span><span class="ow">not</span> <span class="n">relation</span><span class="p">(</span><span class="n">o1</span><span class="p">,</span> <span class="n">o2</span><span class="p">))</span>
+          
+          
+          <span class="k">def</span> <span class="nf">test_equivalence_partition</span><span class="p">():</span>
+              <span class="n">relation</span> <span>=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span> <span>-</span> <span class="n">y</span><span class="p">)</span> <span>%</span> <span class="mi">4</span> <span>==</span> <span class="mi">0</span>
+              <span class="n">classes</span><span class="p">,</span> <span class="n">partitions</span> <span>=</span> <span class="n">equivalence_partition</span><span class="p">(</span>
+                  <span class="nb">range</span><span class="p">(</span><span>-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+                  <span class="n">relation</span>
+              <span class="p">)</span>
+              <span class="n">check_equivalence_partition</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span> <span class="n">partitions</span><span class="p">,</span> <span class="n">relation</span><span class="p">)</span>
+              <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+              <span class="k">for</span> <span class="n">o</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">partitions</span><span class="p">.</span><span class="n">items</span><span class="p">():</span> <span class="k">print</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="s">':'</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+          
+          
+          <span class="k">if</span> <span class="n">__name__</span> <span>==</span> <span class="s">'__main__'</span><span class="p">:</span>
+              <span class="n">test_equivalence_partition</span><span class="p">()</span>
+          </code>
+      </pre>
+      <h3>Execute the Python script</h3>
+      <pre>
+        <code><span class="nv">$ </span>python3 equivalence.py
+        <span>{</span>1, <span>-3</span><span>}</span>
+        <span>{</span>2, <span>-2</span><span>}</span>
+        <span>{</span>3, <span>-1</span><span>}</span>
+        <span>{</span>0, 4<span>}</span>
+        <span>-3</span> : <span>{</span>1, <span>-3</span><span>}</span>
+        <span>-2</span> : <span>{</span>2, <span>-2</span><span>}</span>
+        <span>-1</span> : <span>{</span>3, <span>-1</span><span>}</span>
+        0 : <span>{</span>0, 4<span>}</span>
+        1 : <span>{</span>1, <span>-3</span><span>}</span>
+        2 : <span>{</span>2, <span>-2</span><span>}</span>
+        3 : <span>{</span>3, <span>-1</span><span>}</span>
+        4 : <span>{</span>0, 4<span>}</span>
+        </code>
+      </pre>
+      <h3>Experiment</h3>
+      <p>Changing the evaluation equation to <code>lambda x, y: x % 5 == y % 5</code> for <code>range(0, 10)</code>produces following output</p>
+      <pre><code><span>$ </span>python3 equivalence.py
+        <span>{</span>0, 5<span>}</span>
+        <span>{</span>1, 6<span>}</span>
+        <span>{</span>2, 7<span>}</span>
+        <span>{</span>8, 3<span>}</span>
+        <span>{</span>9, 4<span>}</span>
+        0 : <span>{</span>0, 5<span>}</span>
+        1 : <span>{</span>1, 6<span>}</span>
+        2 : <span>{</span>2, 7<span>}</span>
+        3 : <span>{</span>8, 3<span>}</span>
+        4 : <span>{</span>9, 4<span>}</span>
+        5 : <span>{</span>0, 5<span>}</span>
+        6 : <span>{</span>1, 6<span>}</span>
+        7 : <span>{</span>2, 7<span>}</span>
+        8 : <span>{</span>8, 3<span>}</span>
+        9 : <span>{</span>9, 4<span>}</span>
+        </code></pre>
+        <p>All numbers in the sets have the same result for <code>n % 7</code></p>
+    </div>
+  </div>
+
+   <!-- Footer -->
+   <footer class="wrapper style1 align-center">
+    <div class="inner">
+      <ul class="icons">
+        <li><a href="tel:+852 51139360" class="icon style2 fa-phone" alt="Call Yin Ping Lai mobile phone"><span class="label">Phone</span></a></li>
+        <li><a href="https://www.linkedin.com/in/kris-lai-29b47613a/" class="icon brands style2 fa-linkedin-in" alt="Yin Ping Lai LinkedIn profile page"><span class="label">LinkedIn</span></a></li>
+        <li><a href="https://github.com/yinpinglai" class="icon brands style2 fa-github" alt="Yin Ping Lai Github profile page"><span class="label">Github</span></a></li>
+        <li><a href="mailto:ypinglai29@gmail.com" class="icon style2 fa-envelope" alt="Send email to ypinglai29@gmail.com"><span class="label">Email</span></a></li>
+      </ul>
+      <p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../../../assets/js/jquery.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrollex.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrolly.min.js"></script>
+  <script src="../../../../assets/js/browser.min.js"></script>
+  <script src="../../../../assets/js/breakpoints.min.js"></script>
+  <script src="../../../../assets/js/util.js"></script>
+  <script src="../../../../assets/js/main.js"></script>
+</body>
+</html>
