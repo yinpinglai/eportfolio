@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../../../../assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="../../../../assets/css/noscript.css" /></noscript>
+  <title>Codio Activity - Exploring a sample Python shell</title>
+</head>
+<body class="is-preload">
+  <div id="wrapper">
+    <div class="content-wrapper">
+      <h2>Codio Activity - Exploring a sample Python shell</h2>
+      <hr />
+      <br />
+      <p>Full source code: <a href="https://github.com/yinpinglai/codio_activities/blob/main/exploring_a_sample_command_shell.py" target="_blank">Exploring a sample Python shell exercise source code</a></p>
+      <!-- HTML generated using hilite.me -->
+      <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">os</span>
+<span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">cmd</span> <span style="color: #008800; font-weight: bold">import</span> Cmd
+
+<span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">MyPrompt</span>(Cmd):
+
+  prompt <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;pb&gt; &#39;</span>
+  intro <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;Welcome! Type ? to list commands&quot;</span>
+
+  <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">do_exit</span>(<span style="color: #007020">self</span>, inp):
+    <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&quot;Bye&quot;</span>)
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #007020">True</span>
+    
+  <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">help_exit</span>(<span style="color: #007020">self</span>):
+    <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&#39;exit the application. Shorthand: x q Ctrl-D.&#39;</span>)
+
+  <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">do_add</span>(<span style="color: #007020">self</span>, inp):
+    <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&quot;adding &#39;{}&#39;&quot;</span><span style="color: #333333">.</span>format(inp))
+
+    first_num <span style="color: #333333">=</span> inp[<span style="color: #0000DD; font-weight: bold">0</span>]
+    second_num <span style="color: #333333">=</span> inp[<span style="color: #0000DD; font-weight: bold">2</span>]
+
+    <span style="color: #888888"># verify the first number isn&#39;t empty and it is a valid numeric string</span>
+    <span style="color: #008800; font-weight: bold">if</span> first_num <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&#39;&#39;</span> <span style="color: #000000; font-weight: bold">or</span> <span style="color: #000000; font-weight: bold">not</span> first_num<span style="color: #333333">.</span>isnumeric():
+      <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&quot;Invalid number received: {}&quot;</span><span style="color: #333333">.</span>format(first_num))
+      <span style="color: #008800; font-weight: bold">return</span>
+
+    <span style="color: #888888"># verify the second number isn&#39;t empty and it is a valid numeric string</span>
+    <span style="color: #008800; font-weight: bold">if</span> second_num <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&#39;&#39;</span> <span style="color: #000000; font-weight: bold">or</span> <span style="color: #000000; font-weight: bold">not</span> second_num<span style="color: #333333">.</span>isnumeric():
+      <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&quot;Invalid number received: {}&quot;</span><span style="color: #333333">.</span>format(second_num))
+      <span style="color: #008800; font-weight: bold">return</span>
+
+    first_num <span style="color: #333333">=</span> <span style="color: #007020">float</span>(first_num)
+    second_num <span style="color: #333333">=</span> <span style="color: #007020">float</span>(second_num)
+
+    result <span style="color: #333333">=</span> first_num <span style="color: #333333">+</span> second_num
+    <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&quot;result is {}&quot;</span><span style="color: #333333">.</span>format(result))
+
+  <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">help_add</span>(<span style="color: #007020">self</span>):
+    <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&quot;Add a new entry to the system.&quot;</span>)
+
+  <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">do_list</span>(<span style="color: #007020">self</span>, inp):
+    <span style="color: #DD4422">&#39;&#39;&#39;List the content for the current directory&#39;&#39;&#39;</span>
+    <span style="color: #888888"># get the target directory from input if the input isn&#39;t empty</span>
+    target <span style="color: #333333">=</span> inp <span style="color: #008800; font-weight: bold">if</span> inp <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&#39;&#39;</span> <span style="color: #008800; font-weight: bold">else</span> os<span style="color: #333333">.</span>getcwd()
+
+    <span style="color: #008800; font-weight: bold">try</span>:
+      <span style="color: #008800; font-weight: bold">for</span> r, d, f <span style="color: #000000; font-weight: bold">in</span> os<span style="color: #333333">.</span>walk(target):
+
+        <span style="color: #008800; font-weight: bold">for</span> <span style="color: #007020">dir</span> <span style="color: #000000; font-weight: bold">in</span> d:
+          <span style="color: #888888"># print all sub folders inside the directory</span>
+          <span style="color: #008800; font-weight: bold">print</span>(os<span style="color: #333333">.</span>path<span style="color: #333333">.</span>join(r, <span style="color: #007020">dir</span>))
+
+        <span style="color: #008800; font-weight: bold">for</span> <span style="color: #007020">file</span> <span style="color: #000000; font-weight: bold">in</span> f:
+          <span style="color: #888888"># print all files inside the directory</span>
+          <span style="color: #008800; font-weight: bold">print</span>(os<span style="color: #333333">.</span>path<span style="color: #333333">.</span>join(r, <span style="color: #007020">file</span>))
+
+    <span style="color: #008800; font-weight: bold">except</span> <span style="color: #FF0000; font-weight: bold">Exception</span>:
+      <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&quot;list: no such file or directory: {}&quot;</span><span style="color: #333333">.</span>format())
+
+  <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">help_list</span>(<span style="color: #007020">self</span>):
+    <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&quot;List the content for the current direcotry.&quot;</span>)
+
+  <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">default</span>(<span style="color: #007020">self</span>, inp):
+    <span style="color: #008800; font-weight: bold">if</span> inp <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&#39;x&#39;</span> <span style="color: #000000; font-weight: bold">or</span> inp <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&#39;q&#39;</span>:
+      <span style="color: #008800; font-weight: bold">return</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>do_exit(inp)
+
+    <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&quot;Default: {}&quot;</span><span style="color: #333333">.</span>format(inp))
+
+  do_EOF <span style="color: #333333">=</span> do_exit
+  help_EOF <span style="color: #333333">=</span> help_exit
+ 
+<span style="color: #008800; font-weight: bold">if</span> __name__ <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&#39;__main__&#39;</span>:
+    MyPrompt()<span style="color: #333333">.</span>cmdloop()
+</pre>
+</div>
+    <p>Perform potential vulnerabilities scanning by the bandit package:</p>
+    <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #FF0000; background-color: #FFAAAA" >$</span> bandit <span style="color: #333333">./</span>exploring_a_sample_command_shell<span style="color: #333333">.</span>py
+[main]  INFO    profile include tests: <span style="color: #007020">None</span>
+[main]  INFO    profile exclude tests: <span style="color: #007020">None</span>
+[main]  INFO    cli include tests: <span style="color: #007020">None</span>
+[main]  INFO    cli exclude tests: <span style="color: #007020">None</span>
+[main]  INFO    running on Python <span style="color: #6600EE; font-weight: bold">3.9</span><span style="color: #333333">.</span><span style="color: #0000DD; font-weight: bold">12</span>
+Run started:<span style="color: #0000DD; font-weight: bold">2022</span><span style="color: #333333">-</span><span style="color: #4400EE; font-weight: bold">04</span><span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">23</span> <span style="color: #4400EE; font-weight: bold">05</span>:<span style="color: #0000DD; font-weight: bold">11</span>:<span style="color: #6600EE; font-weight: bold">24.397693</span>
+
+Test results:
+        No issues identified<span style="color: #333333">.</span>
+
+Code scanned:
+        Total lines of code: <span style="color: #0000DD; font-weight: bold">47</span>
+        Total lines skipped (<span style="color: #888888">#nosec): 0</span>
+
+Run metrics:
+        Total issues (by severity):
+                Undefined: <span style="color: #0000DD; font-weight: bold">0</span>
+                Low: <span style="color: #0000DD; font-weight: bold">0</span>
+                Medium: <span style="color: #0000DD; font-weight: bold">0</span>
+                High: <span style="color: #0000DD; font-weight: bold">0</span>
+        Total issues (by confidence):
+                Undefined: <span style="color: #0000DD; font-weight: bold">0</span>
+                Low: <span style="color: #0000DD; font-weight: bold">0</span>
+                Medium: <span style="color: #0000DD; font-weight: bold">0</span>
+                High: <span style="color: #0000DD; font-weight: bold">0</span>
+Files skipped (<span style="color: #0000DD; font-weight: bold">0</span>):
+</pre></div>
+
+      <ul>
+        <li>
+          <h3>What are the two main security vulnerabilities with your shell?</h3>
+          <p>There are two main security vulnerabilities:</p>
+          <ol>
+            <li>Integer overflow vulnerability</li>
+            <li>Command injection vulnerability</li>
+          </ol>
+        </li>
+        <li>
+          <h3>What is one recommendation you would make to increase the security of the shell?</h3>
+          <ol>
+            <li>Use Python 3 to execute the shell script</li>
+            <li>Avoid evaluate user's input command directly</li>
+          </ol>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+   <!-- Footer -->
+   <footer class="wrapper style1 align-center">
+    <div class="inner">
+      <ul class="icons">
+        <li><a href="tel:+852 51139360" class="icon style2 fa-phone" alt="Call Yin Ping Lai mobile phone"><span class="label">Phone</span></a></li>
+        <li><a href="https://www.linkedin.com/in/kris-lai-29b47613a/" class="icon brands style2 fa-linkedin-in" alt="Yin Ping Lai LinkedIn profile page"><span class="label">LinkedIn</span></a></li>
+        <li><a href="https://github.com/yinpinglai" class="icon brands style2 fa-github" alt="Yin Ping Lai Github profile page"><span class="label">Github</span></a></li>
+        <li><a href="mailto:ypinglai29@gmail.com" class="icon style2 fa-envelope" alt="Send email to ypinglai29@gmail.com"><span class="label">Email</span></a></li>
+      </ul>
+      <p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../../../assets/js/jquery.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrollex.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrolly.min.js"></script>
+  <script src="../../../../assets/js/browser.min.js"></script>
+  <script src="../../../../assets/js/breakpoints.min.js"></script>
+  <script src="../../../../assets/js/util.js"></script>
+  <script src="../../../../assets/js/main.js"></script>
+</body>
+</html>
