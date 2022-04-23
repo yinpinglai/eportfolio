@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../../../../assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="../../../../assets/css/noscript.css" /></noscript>
+  <title>Codio Activity - Testing with Python</title>
+</head>
+<body class="is-preload">
+  <div id="wrapper">
+    <div class="content-wrapper">
+      <h2>Codio Activity - Testing with Python</h2>
+      <hr />
+      <br />
+      <div>
+        <h3>Question 1</h3>
+        <div>Run styleLint.py in Codio.</div>
+        <br />
+        <div>What happens when the code is run? Can you modify this code for a more favourable outcome? What amendments have you made to the code?</div>
+        <div>The code throws an exception:</div>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #c65d09; font-weight: bold">codio@silkinput-salonfalcon:~/workspace$</span> python3 ./styleLint.py
+  <span style="color: #888888">File &quot;./styleLint.py&quot;, line 5</span>
+  <span style="color: #888888">    &quot;&quot;&quot; Return factorial of n &quot;&quot;&quot;</span>
+  </pre></div>
+        <div>After I modified the code:</div>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888"># CODE SOURCE: SOFTWARE ARCHITECTURE WITH PYTHON </span>
+<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">factorial</span>(n):
+  <span style="color: #DD4422">&quot;&quot;&quot; Return factorial of n &quot;&quot;&quot;</span>
+  <span style="color: #008800; font-weight: bold">if</span> n <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">0</span>:
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">1</span>
+  <span style="color: #008800; font-weight: bold">else</span>:
+    <span style="color: #008800; font-weight: bold">return</span> n<span style="color: #333333">*</span>factorial(n<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>)
+</pre></div>
+        <div></div>
+        <div>I adjust the indentation for those lines.</div>
+      </div>
+      <br />
+      <div>
+        <h3>Question 2</h3>
+        <pre>
+pip install pylint
+Run
+ pylint 
+on pylintTest.py
+        </pre>
+        <div>Review each of the code errors returned. Can you correct each of the errors identified by pylint?</div>
+        <div>Before correcting the code errors, save the pylintTest.py file with a new name (it will be needed again in the next question).</div>
+        <div>When I run the code:</div>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #FF0000; background-color: #FFAAAA">$</span> pylint styleLint<span style="color: #333333">.</span>py
+<span style="color: #333333">*************</span> Module styleLint
+styleLint<span style="color: #333333">.</span>py:<span style="color: #0000DD; font-weight: bold">5</span>:<span style="color: #0000DD; font-weight: bold">29</span>: E0001: invalid syntax (<span style="color: #333333">&lt;</span>unknown<span style="color: #333333">&gt;</span>, line <span style="color: #0000DD; font-weight: bold">5</span>) (syntax<span style="color: #333333">-</span>error)
+</pre></div>
+        <div>The result isn't meaningful for me. I adjust the code a little bit:</div>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">factorial</span>(n):
+    <span style="color: #DD4422">&quot;&quot;&quot; Return factorial of n &quot;&quot;&quot;</span>
+    <span style="color: #008800; font-weight: bold">if</span> n <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">0</span>:
+        <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">1</span>
+    <span style="color: #008800; font-weight: bold">return</span> n<span style="color: #333333">*</span>factorial(n<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>)
+
+<span style="color: #008800; font-weight: bold">if</span> __name__ <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&#39;__main__&#39;</span>:
+    <span style="color: #007020">print</span>(factorial(<span style="color: #0000DD; font-weight: bold">4</span>))
+</pre></div>
+      <div></div>
+        <div>The code outputs <strong>24</strong> and the score is <strong>10.0/10.0</strong>.</div>
+      </div>
+      <br />
+      <div>
+        <h3>Question 3</h3>
+        <pre>
+pip install flake8
+Run
+flake8 
+on pylintTest.py
+        </pre>
+        <div>Review the errors returned. In what way does this error message differ from the error message returned by pylint?</div>
+        <div>When running pylint on pylintTest.py, it produces:</div>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">$ pylint pylintTest.py</span>
+<span style="color: #888888">************* Module pylintTest</span>
+<span style="color: #888888">pylintTest.py:26:13: E0001: Missing parentheses in call to &#39;print&#39;. Did you mean print(encoded)? (&lt;unknown&gt;, line 26) (syntax-error)</span>
+</pre></div>
+        <div>When running flake8 on pylintTest.py, it produces:</div>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">$ flake8 pylint_test.py</span>
+<span style="color: #888888">pylint_test.py:4:1: E302 expected 2 blank lines, found 1</span>
+<span style="color: #888888">pylint_test.py:17:24: E225 missing whitespace around operator</span>
+<span style="color: #888888">pylint_test.py:27:1: E305 expected 2 blank lines after class or function definition, found 1</span>
+</pre></div>
+        <br />
+        <div>Run flake8 on metricTest.py. Can you correct each of the errors returned by flake8? What amendments have you made to the code?</div>
+        <div>When running flake8 on metricTest.py, it produces</div>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">$ flake8 metricTest.py</span>
+  <span style="color: #888888">metricTest.py:13:8: E999 SyntaxError: invalid syntax</span>
+</pre></div>
+        <div></div>
+        <div>The original source code:</div>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">#CODE SOURCE: SOFTWARE ARCHITECTURE WITH PYTHON </span>
+
+<span style="color: #DD4422">&quot;&quot;&quot;</span>
+<span style="color: #DD4422">2 Module metricTest.py</span>
+<span style="color: #DD4422">3</span>
+<span style="color: #DD4422">4 Metric example - Module which is used as a testbed for static</span>
+<span style="color: #DD4422">checkers.</span>
+<span style="color: #DD4422">5 This is a mix of different functions and classes doing</span>
+<span style="color: #DD4422">different things.</span>
+<span style="color: #DD4422">6</span>
+<span style="color: #DD4422">7 &quot;&quot;&quot;</span>
+<span style="color: #0000DD; font-weight: bold">8</span> <span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">random</span>
+<span style="color: #0000DD; font-weight: bold">9</span>
+<span style="color: #0000DD; font-weight: bold">10</span> <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">fn</span>(x, y):
+<span style="color: #0000DD; font-weight: bold">11</span> <span style="background-color: #fff0f0">&quot;&quot;&quot; A function which performs a sum &quot;&quot;&quot;</span>
+<span style="color: #0000DD; font-weight: bold">12</span> <span style="color: #008800; font-weight: bold">return</span> x <span style="color: #333333">+</span> y
+<span style="color: #0000DD; font-weight: bold">13</span>
+<span style="color: #0000DD; font-weight: bold">14</span> <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">find_optimal_route_to_my_office_from_home</span>(start_time,
+<span style="color: #0000DD; font-weight: bold">15</span> expected_time,
+<span style="color: #0000DD; font-weight: bold">16</span> favorite_route<span style="color: #333333">=</span><span style="background-color: #fff0f0">&#39;SBS1K&#39;</span>,
+<span style="color: #0000DD; font-weight: bold">17</span> favorite_option<span style="color: #333333">=</span><span style="background-color: #fff0f0">&#39;bus&#39;</span>):
+<span style="color: #0000DD; font-weight: bold">18</span>
+<span style="color: #0000DD; font-weight: bold">19</span>
+<span style="color: #0000DD; font-weight: bold">20</span> d <span style="color: #333333">=</span> (expected_time <span style="color: #FF0000; background-color: #FFAAAA">–</span> start_time)<span style="color: #333333">.</span>total_seconds()<span style="color: #333333">/</span><span style="color: #6600EE; font-weight: bold">60.0</span>
+<span style="color: #0000DD; font-weight: bold">21</span>
+<span style="color: #0000DD; font-weight: bold">22</span> <span style="color: #008800; font-weight: bold">if</span> d<span style="color: #333333">&lt;=</span><span style="color: #0000DD; font-weight: bold">30</span>:
+<span style="color: #0000DD; font-weight: bold">23</span> <span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&#39;car&#39;</span>
+<span style="color: #0000DD; font-weight: bold">24</span>
+<span style="color: #0000DD; font-weight: bold">25</span> <span style="color: #888888"># If d&gt;30 but &lt;45, first drive then take metro</span>
+<span style="color: #0000DD; font-weight: bold">26</span> <span style="color: #008800; font-weight: bold">if</span> d<span style="color: #333333">&gt;</span><span style="color: #0000DD; font-weight: bold">30</span> <span style="color: #000000; font-weight: bold">and</span> d<span style="color: #333333">&lt;</span><span style="color: #0000DD; font-weight: bold">45</span>:
+<span style="color: #0000DD; font-weight: bold">27</span> <span style="color: #008800; font-weight: bold">return</span> (<span style="background-color: #fff0f0">&#39;car&#39;</span>, <span style="background-color: #fff0f0">&#39;metro&#39;</span>)
+<span style="color: #0000DD; font-weight: bold">28</span>
+<span style="color: #0000DD; font-weight: bold">29</span> <span style="color: #888888"># If d&gt;45 there are a combination of optionsWriting Modifiable and Readable Code</span>
+[ <span style="color: #0000DD; font-weight: bold">68</span> ]
+<span style="color: #0000DD; font-weight: bold">30</span> <span style="color: #008800; font-weight: bold">if</span> d<span style="color: #333333">&gt;</span><span style="color: #0000DD; font-weight: bold">45</span>:
+<span style="color: #0000DD; font-weight: bold">31</span> <span style="color: #008800; font-weight: bold">if</span> d<span style="color: #333333">&lt;</span><span style="color: #0000DD; font-weight: bold">60</span>:
+<span style="color: #0000DD; font-weight: bold">32</span> <span style="color: #888888"># First volvo,then connecting bus</span>
+<span style="color: #0000DD; font-weight: bold">33</span> <span style="color: #008800; font-weight: bold">return</span> (<span style="background-color: #fff0f0">&#39;bus:335E&#39;</span>,<span style="background-color: #fff0f0">&#39;bus:connector&#39;</span>)
+<span style="color: #0000DD; font-weight: bold">34</span> <span style="color: #008800; font-weight: bold">elif</span> d<span style="color: #333333">&gt;</span><span style="color: #0000DD; font-weight: bold">80</span>:
+<span style="color: #0000DD; font-weight: bold">35</span> <span style="color: #888888"># Might as well go by normal bus</span>
+<span style="color: #0000DD; font-weight: bold">36</span> <span style="color: #008800; font-weight: bold">return</span> random<span style="color: #333333">.</span>choice((<span style="background-color: #fff0f0">&#39;bus:330&#39;</span>,<span style="background-color: #fff0f0">&#39;bus:331&#39;</span>,<span style="background-color: #fff0f0">&#39;:&#39;</span><span style="color: #333333">.</span>
+join((favorite_option,
+<span style="color: #0000DD; font-weight: bold">37</span> favorite_route))))
+<span style="color: #0000DD; font-weight: bold">38</span> <span style="color: #008800; font-weight: bold">elif</span> d<span style="color: #333333">&gt;</span><span style="color: #0000DD; font-weight: bold">90</span>:
+<span style="color: #0000DD; font-weight: bold">39</span> <span style="color: #888888"># Relax and choose favorite route</span>
+<span style="color: #0000DD; font-weight: bold">40</span> <span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&#39;:&#39;</span><span style="color: #333333">.</span>join((favorite_option,
+<span style="color: #0000DD; font-weight: bold">41</span> favorite_route))
+<span style="color: #0000DD; font-weight: bold">42</span>
+<span style="color: #0000DD; font-weight: bold">43</span>
+<span style="color: #0000DD; font-weight: bold">44</span> <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">C</span>(<span style="color: #007020">object</span>):
+<span style="color: #0000DD; font-weight: bold">45</span> <span style="background-color: #fff0f0">&quot;&quot;&quot; A class which does almost nothing &quot;&quot;&quot;</span>
+<span style="color: #0000DD; font-weight: bold">46</span>
+<span style="color: #0000DD; font-weight: bold">47</span> <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">__init__</span>(<span style="color: #007020">self</span>, x,y):
+<span style="color: #0000DD; font-weight: bold">48</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>x <span style="color: #333333">=</span> x
+<span style="color: #0000DD; font-weight: bold">49</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>y <span style="color: #333333">=</span> y
+<span style="color: #0000DD; font-weight: bold">50</span>
+<span style="color: #0000DD; font-weight: bold">51</span> <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">f</span>(<span style="color: #007020">self</span>):
+<span style="color: #0000DD; font-weight: bold">52</span> <span style="color: #008800; font-weight: bold">pass</span>
+<span style="color: #0000DD; font-weight: bold">53</span>
+<span style="color: #0000DD; font-weight: bold">54</span> <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">g</span>(<span style="color: #007020">self</span>, x, y):
+<span style="color: #0000DD; font-weight: bold">55</span>
+<span style="color: #0000DD; font-weight: bold">56</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>x<span style="color: #333333">&gt;</span>x:
+<span style="color: #0000DD; font-weight: bold">57</span> <span style="color: #008800; font-weight: bold">return</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>x<span style="color: #333333">+</span><span style="color: #007020">self</span><span style="color: #333333">.</span>y
+<span style="color: #0000DD; font-weight: bold">58</span> <span style="color: #008800; font-weight: bold">elif</span> x<span style="color: #333333">&gt;</span><span style="color: #007020">self</span><span style="color: #333333">.</span>x:
+<span style="color: #0000DD; font-weight: bold">59</span> <span style="color: #008800; font-weight: bold">return</span> x<span style="color: #333333">+</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>y
+<span style="color: #0000DD; font-weight: bold">60</span>
+<span style="color: #0000DD; font-weight: bold">61</span> <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">D</span>(C):
+<span style="color: #0000DD; font-weight: bold">62</span> <span style="background-color: #fff0f0">&quot;&quot;&quot; D class &quot;&quot;&quot;</span>
+<span style="color: #0000DD; font-weight: bold">63</span>
+<span style="color: #0000DD; font-weight: bold">64</span> <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">__init__</span>(<span style="color: #007020">self</span>, x):
+<span style="color: #0000DD; font-weight: bold">65</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>x <span style="color: #333333">=</span> x
+<span style="color: #0000DD; font-weight: bold">66</span>
+<span style="color: #0000DD; font-weight: bold">67</span> <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">f</span>(<span style="color: #007020">self</span>, x,y):
+<span style="color: #0000DD; font-weight: bold">68</span> <span style="color: #008800; font-weight: bold">if</span> x<span style="color: #333333">&gt;</span>y:
+<span style="color: #0000DD; font-weight: bold">69</span> <span style="color: #008800; font-weight: bold">return</span> x<span style="color: #333333">-</span>y
+<span style="color: #0000DD; font-weight: bold">70</span> <span style="color: #008800; font-weight: bold">else</span>:Chapter <span style="color: #0000DD; font-weight: bold">2</span>
+[ <span style="color: #0000DD; font-weight: bold">69</span> ]
+<span style="color: #0000DD; font-weight: bold">71</span> <span style="color: #008800; font-weight: bold">return</span> x<span style="color: #333333">+</span>y
+<span style="color: #0000DD; font-weight: bold">72</span>
+<span style="color: #0000DD; font-weight: bold">73</span> <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">g</span>(<span style="color: #007020">self</span>, y):
+<span style="color: #0000DD; font-weight: bold">74</span>
+<span style="color: #0000DD; font-weight: bold">75</span> <span style="color: #008800; font-weight: bold">if</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>x<span style="color: #333333">&gt;</span>y:
+<span style="color: #0000DD; font-weight: bold">76</span> <span style="color: #008800; font-weight: bold">return</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>x<span style="color: #333333">+</span>y
+<span style="color: #0000DD; font-weight: bold">77</span> <span style="color: #008800; font-weight: bold">else</span>:
+<span style="color: #0000DD; font-weight: bold">78</span> <span style="color: #008800; font-weight: bold">return</span> y<span style="color: #333333">-</span><span style="color: #007020">self</span><span style="color: #333333">.</span>x
+</pre></div>
+      <div>I make amendments on the code</div>
+      <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #DD4422">&quot;&quot;&quot;</span>
+<span style="color: #DD4422">Module metricTest.py</span>
+
+<span style="color: #DD4422">Metric example - Module which is used as a testbed for static</span>
+<span style="color: #DD4422">checkers.</span>
+<span style="color: #DD4422">This is a mix of different functions and classes doing</span>
+<span style="color: #DD4422">different things.</span>
+
+<span style="color: #DD4422">&quot;&quot;&quot;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">random</span>
+
+
+<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">fn</span>(x, y):
+    <span style="color: #DD4422">&quot;&quot;&quot; A function which performs a sum &quot;&quot;&quot;</span>
+    <span style="color: #008800; font-weight: bold">return</span> x <span style="color: #333333">+</span> y
+
+
+<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">find_optimal_route_to_my_office_from_home</span>(start_time, expected_time,
+                                              favorite_route<span style="color: #333333">=</span><span style="background-color: #fff0f0">&#39;SBS1K&#39;</span>,
+                                              favorite_option<span style="color: #333333">=</span><span style="background-color: #fff0f0">&#39;bus&#39;</span>):
+
+    d <span style="color: #333333">=</span> (expected_time <span style="color: #333333">-</span> start_time)<span style="color: #333333">.</span>total_seconds()<span style="color: #333333">/</span><span style="color: #6600EE; font-weight: bold">60.0</span>
+
+    <span style="color: #008800; font-weight: bold">if</span> d <span style="color: #333333">&lt;=</span> <span style="color: #0000DD; font-weight: bold">30</span>:
+        <span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&#39;car&#39;</span>
+
+    <span style="color: #888888"># If d&gt;30 but &lt;45, first drive then take metro</span>
+    <span style="color: #008800; font-weight: bold">if</span> d <span style="color: #333333">&gt;</span> <span style="color: #0000DD; font-weight: bold">30</span> <span style="color: #000000; font-weight: bold">and</span> d <span style="color: #333333">&lt;</span> <span style="color: #0000DD; font-weight: bold">45</span>:
+        <span style="color: #008800; font-weight: bold">return</span> (<span style="background-color: #fff0f0">&#39;car&#39;</span>, <span style="background-color: #fff0f0">&#39;metro&#39;</span>)
+
+    <span style="color: #888888"># If d&gt;45 there are a combination of optionsWriting</span>
+    <span style="color: #888888"># Modifiable and Readable Code</span>
+    <span style="color: #008800; font-weight: bold">if</span> d <span style="color: #333333">&gt;</span> <span style="color: #0000DD; font-weight: bold">45</span>:
+        <span style="color: #008800; font-weight: bold">if</span> d <span style="color: #333333">&lt;</span> <span style="color: #0000DD; font-weight: bold">60</span>:
+            <span style="color: #888888"># First volvo,then connecting bus</span>
+            <span style="color: #008800; font-weight: bold">return</span> (<span style="background-color: #fff0f0">&#39;bus:335E&#39;</span>, <span style="background-color: #fff0f0">&#39;bus:connector&#39;</span>)
+        <span style="color: #008800; font-weight: bold">elif</span> d <span style="color: #333333">&gt;</span> <span style="color: #0000DD; font-weight: bold">80</span>:
+            <span style="color: #888888"># Might as well go by normal bus</span>
+            <span style="color: #008800; font-weight: bold">return</span> random<span style="color: #333333">.</span>choice((<span style="background-color: #fff0f0">&#39;bus:330&#39;</span>, <span style="background-color: #fff0f0">&#39;bus:331&#39;</span>,
+                                 <span style="background-color: #fff0f0">&#39;:&#39;</span><span style="color: #333333">.</span>join((favorite_option, favorite_route))))
+        <span style="color: #008800; font-weight: bold">elif</span> d <span style="color: #333333">&gt;</span> <span style="color: #0000DD; font-weight: bold">90</span>:
+            <span style="color: #888888"># Relax and choose favorite route</span>
+            <span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&#39;:&#39;</span><span style="color: #333333">.</span>join((favorite_option, favorite_route))
+
+
+<span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">C</span>(<span style="color: #007020">object</span>):
+    <span style="color: #DD4422">&quot;&quot;&quot; A class which does almost nothing &quot;&quot;&quot;</span>
+
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">__init__</span>(<span style="color: #007020">self</span>, x, y):
+        <span style="color: #007020">self</span><span style="color: #333333">.</span>x <span style="color: #333333">=</span> x
+        <span style="color: #007020">self</span><span style="color: #333333">.</span>y <span style="color: #333333">=</span> y
+
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">f</span>(<span style="color: #007020">self</span>):
+        <span style="color: #008800; font-weight: bold">pass</span>
+
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">g</span>(<span style="color: #007020">self</span>, x, y):
+        <span style="color: #008800; font-weight: bold">if</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>x <span style="color: #333333">&gt;</span> x:
+            <span style="color: #008800; font-weight: bold">return</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>x <span style="color: #333333">+</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>y
+        <span style="color: #008800; font-weight: bold">elif</span> x <span style="color: #333333">&gt;</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>x:
+            <span style="color: #008800; font-weight: bold">return</span> x <span style="color: #333333">+</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>y
+
+
+<span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">D</span>(C):
+    <span style="color: #DD4422">&quot;&quot;&quot; D class &quot;&quot;&quot;</span>
+
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">__init__</span>(<span style="color: #007020">self</span>, x):
+        <span style="color: #007020">self</span><span style="color: #333333">.</span>x <span style="color: #333333">=</span> x
+
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">f</span>(<span style="color: #007020">self</span>, x, y):
+        <span style="color: #008800; font-weight: bold">if</span> x <span style="color: #333333">&gt;</span> y:
+            <span style="color: #008800; font-weight: bold">return</span> x <span style="color: #333333">-</span> y
+        <span style="color: #008800; font-weight: bold">else</span>:
+            <span style="color: #008800; font-weight: bold">return</span> x <span style="color: #333333">+</span> y
+
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">g</span>(<span style="color: #007020">self</span>, y):
+        <span style="color: #008800; font-weight: bold">if</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>x <span style="color: #333333">&gt;</span> y:
+            <span style="color: #008800; font-weight: bold">return</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>x <span style="color: #333333">+</span> y
+        <span style="color: #008800; font-weight: bold">else</span>:
+            <span style="color: #008800; font-weight: bold">return</span> y <span style="color: #333333">-</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>x
+</pre></div>
+      </div>
+      <div>
+        <h3>Question 4</h3>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">pip install mccabe</span>
+</pre></div>
+  <pre>
+    Run
+    mccabe 
+    on sums.py. What is the result?
+  </pre>
+  <pre>
+    Run
+    mccabe 
+    on sums2.py. What is the result?
+  </pre>
+        <div>What are the contributors to the cyclomatic complexity in each piece of code?</div>
+        <br />
+        <div>When running mccabe on sums.py, it produces:</div>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">$ python3 -m mccabe sums.py</span>
+<span style="color: #888888">4:0: &#39;test_sum&#39; 1</span>
+<span style="color: #888888">If 7 2</span>
+</pre></div>
+        <div>When running mccabe on sums2.py, it produces:</div>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">$ python3 -m mccabe sums2.py</span>
+<span style="color: #888888">4:0: &#39;test_sum&#39; 1</span>
+<span style="color: #888888">7:0: &#39;test_sum_tuple&#39; 1</span>
+<span style="color: #888888">If 10 2</span>
+</pre></div>
+        <p>There are not much meaningful messages because those programs are quite simple and no branches in the code.</p>
+      </div>
+    </div>
+  </div>
+
+   <!-- Footer -->
+   <footer class="wrapper style1 align-center">
+    <div class="inner">
+      <ul class="icons">
+        <li><a href="tel:+852 51139360" class="icon style2 fa-phone" alt="Call Yin Ping Lai mobile phone"><span class="label">Phone</span></a></li>
+        <li><a href="https://www.linkedin.com/in/kris-lai-29b47613a/" class="icon brands style2 fa-linkedin-in" alt="Yin Ping Lai LinkedIn profile page"><span class="label">LinkedIn</span></a></li>
+        <li><a href="https://github.com/yinpinglai" class="icon brands style2 fa-github" alt="Yin Ping Lai Github profile page"><span class="label">Github</span></a></li>
+        <li><a href="mailto:ypinglai29@gmail.com" class="icon style2 fa-envelope" alt="Send email to ypinglai29@gmail.com"><span class="label">Email</span></a></li>
+      </ul>
+      <p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../../../assets/js/jquery.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrollex.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrolly.min.js"></script>
+  <script src="../../../../assets/js/browser.min.js"></script>
+  <script src="../../../../assets/js/breakpoints.min.js"></script>
+  <script src="../../../../assets/js/util.js"></script>
+  <script src="../../../../assets/js/main.js"></script>
+</body>
+</html>
