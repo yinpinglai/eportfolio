@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../../../../assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="../../../../assets/css/noscript.css" /></noscript>
+  <title>Developing an API for distributed environment</title>
+</head>
+<body class="is-preload">
+  <div id="wrapper">
+    <div class="content-wrapper">
+      <h2>Developing an API for distributed environment</h2>
+      <hr />
+      <br />
+      <div>
+        <h3>Source Code:</h3>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">flask</span> <span style="color: #008800; font-weight: bold">import</span> Flask
+<span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">flask_restful</span> <span style="color: #008800; font-weight: bold">import</span> Api, Resource, reqparse
+ 
+app <span style="color: #333333">=</span> Flask(__name__)
+api <span style="color: #333333">=</span> Api(app)
+ 
+users <span style="color: #333333">=</span> [
+    {
+        <span style="background-color: #fff0f0">&quot;name&quot;</span>: <span style="background-color: #fff0f0">&quot;James&quot;</span>,
+        <span style="background-color: #fff0f0">&quot;age&quot;</span>: <span style="color: #0000DD; font-weight: bold">30</span>,
+        <span style="background-color: #fff0f0">&quot;occupation&quot;</span>: <span style="background-color: #fff0f0">&quot;Network Engineer&quot;</span>
+    },
+    {
+        <span style="background-color: #fff0f0">&quot;name&quot;</span>: <span style="background-color: #fff0f0">&quot;Ann&quot;</span>,
+        <span style="background-color: #fff0f0">&quot;age&quot;</span>: <span style="color: #0000DD; font-weight: bold">32</span>,
+        <span style="background-color: #fff0f0">&quot;occupation&quot;</span>: <span style="background-color: #fff0f0">&quot;Doctor&quot;</span>
+    },
+    {
+        <span style="background-color: #fff0f0">&quot;name&quot;</span>: <span style="background-color: #fff0f0">&quot;Jason&quot;</span>,
+        <span style="background-color: #fff0f0">&quot;age&quot;</span>: <span style="color: #0000DD; font-weight: bold">22</span>,
+        <span style="background-color: #fff0f0">&quot;occupation&quot;</span>: <span style="background-color: #fff0f0">&quot;Web Developer&quot;</span>
+    }
+]
+ 
+<span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">User</span>(Resource):
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">get</span>(<span style="color: #007020">self</span>, name):
+        <span style="color: #008800; font-weight: bold">for</span> user <span style="color: #000000; font-weight: bold">in</span> users:
+            <span style="color: #008800; font-weight: bold">if</span>(name <span style="color: #333333">==</span> user[<span style="background-color: #fff0f0">&quot;name&quot;</span>]):
+                <span style="color: #008800; font-weight: bold">return</span> user, <span style="color: #0000DD; font-weight: bold">200</span>
+        <span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&quot;User not found&quot;</span>, <span style="color: #0000DD; font-weight: bold">404</span>
+ 
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">post</span>(<span style="color: #007020">self</span>, name):
+        parser <span style="color: #333333">=</span> reqparse<span style="color: #333333">.</span>RequestParser()
+        parser<span style="color: #333333">.</span>add_argument(<span style="background-color: #fff0f0">&quot;age&quot;</span>)
+        parser<span style="color: #333333">.</span>add_argument(<span style="background-color: #fff0f0">&quot;occupation&quot;</span>)
+        args <span style="color: #333333">=</span> parser<span style="color: #333333">.</span>parse_args()
+ 
+        <span style="color: #008800; font-weight: bold">for</span> user <span style="color: #000000; font-weight: bold">in</span> users:
+            <span style="color: #008800; font-weight: bold">if</span>(name <span style="color: #333333">==</span> user[<span style="background-color: #fff0f0">&quot;name&quot;</span>]):
+                <span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&quot;User with name {} already exists&quot;</span><span style="color: #333333">.</span>format(name), <span style="color: #0000DD; font-weight: bold">400</span>
+ 
+        user <span style="color: #333333">=</span> {
+            <span style="background-color: #fff0f0">&quot;name&quot;</span>: name,
+            <span style="background-color: #fff0f0">&quot;age&quot;</span>: args[<span style="background-color: #fff0f0">&quot;age&quot;</span>],
+            <span style="background-color: #fff0f0">&quot;occupation&quot;</span>: args[<span style="background-color: #fff0f0">&quot;occupation&quot;</span>]
+        }
+        users<span style="color: #333333">.</span>append(user)
+        <span style="color: #008800; font-weight: bold">return</span> user, <span style="color: #0000DD; font-weight: bold">201</span>
+ 
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">put</span>(<span style="color: #007020">self</span>, name):
+        parser <span style="color: #333333">=</span> reqparse<span style="color: #333333">.</span>RequestParser()
+        parser<span style="color: #333333">.</span>add_argument(<span style="background-color: #fff0f0">&quot;age&quot;</span>)
+        parser<span style="color: #333333">.</span>add_argument(<span style="background-color: #fff0f0">&quot;occupation&quot;</span>)
+        args <span style="color: #333333">=</span> parser<span style="color: #333333">.</span>parse_args()
+ 
+        <span style="color: #008800; font-weight: bold">for</span> user <span style="color: #000000; font-weight: bold">in</span> users:
+            <span style="color: #008800; font-weight: bold">if</span>(name <span style="color: #333333">==</span> user[<span style="background-color: #fff0f0">&quot;name&quot;</span>]):
+                user[<span style="background-color: #fff0f0">&quot;age&quot;</span>] <span style="color: #333333">=</span> args[<span style="background-color: #fff0f0">&quot;age&quot;</span>]
+                user[<span style="background-color: #fff0f0">&quot;occupation&quot;</span>] <span style="color: #333333">=</span> args[<span style="background-color: #fff0f0">&quot;occupation&quot;</span>]
+                <span style="color: #008800; font-weight: bold">return</span> user, <span style="color: #0000DD; font-weight: bold">200</span>
+        
+        user <span style="color: #333333">=</span> {
+            <span style="background-color: #fff0f0">&quot;name&quot;</span>: name,
+            <span style="background-color: #fff0f0">&quot;age&quot;</span>: args[<span style="background-color: #fff0f0">&quot;age&quot;</span>],
+            <span style="background-color: #fff0f0">&quot;occupation&quot;</span>: args[<span style="background-color: #fff0f0">&quot;occupation&quot;</span>]
+        }
+        users<span style="color: #333333">.</span>append(user)
+        <span style="color: #008800; font-weight: bold">return</span> user, <span style="color: #0000DD; font-weight: bold">201</span>
+ 
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">delete</span>(<span style="color: #007020">self</span>, name):
+        <span style="color: #008800; font-weight: bold">global</span> users
+        users <span style="color: #333333">=</span> [user <span style="color: #008800; font-weight: bold">for</span> user <span style="color: #000000; font-weight: bold">in</span> users <span style="color: #008800; font-weight: bold">if</span> user[<span style="background-color: #fff0f0">&quot;name&quot;</span>] <span style="color: #333333">!=</span> name]
+        <span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&quot;{} is deleted.&quot;</span><span style="color: #333333">.</span>format(name), <span style="color: #0000DD; font-weight: bold">200</span>
+      
+api<span style="color: #333333">.</span>add_resource(User, <span style="background-color: #fff0f0">&quot;/user/&lt;string:name&gt;&quot;</span>)
+ 
+app<span style="color: #333333">.</span>run(debug<span style="color: #333333">=</span><span style="color: #008800; font-weight: bold">True</span>)
+</pre></div>
+      </div>
+      <div>
+        <h3>Question 1</h3>
+        <div>Run the API.py code. Take a screenshot of the terminal output. What command did you use to compile and run the code?</div>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">$ python3 api.py</span>
+<span style="color: #888888"> * Serving Flask app &#39;api&#39; (lazy loading)</span>
+<span style="color: #888888"> * Environment: production</span>
+<span style="color: #888888">   WARNING: This is a development server. Do not use it in a production deployment.</span>
+<span style="color: #888888">   Use a production WSGI server instead.</span>
+<span style="color: #888888"> * Debug mode: on</span>
+<span style="color: #888888"> * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)</span>
+<span style="color: #888888"> * Restarting with stat</span>
+<span style="color: #888888"> * Debugger is active!</span>
+<span style="color: #888888"> * Debugger PIN: 100-815-182</span>
+</pre></div>
+      </div>
+      <div>
+        <h3>Question 2</h3>
+        <div>Run the following command at the terminal prompt: w3m http://127.0.0.1:5000/user/Ann What happens when this command is run, and why?</div>
+        <p>The command calls the users endpoint /user with the name parameter Ann. It performs search for a user who named Ann.</p>
+      </div>
+      <div>
+        <h3>Question 3</h3>
+        <div>Run the following command at the terminal prompt: w3m http://127.0.0.1:5000/user/Adam What happens when this command is run, and why?</div>
+        <p>The command also calls the same user endpoint but this time the parameter is Adam. It looking for a user who named Adam but there is no such user in the memory.</p>
+      </div>
+    </div>
+  </div>
+
+   <!-- Footer -->
+   <footer class="wrapper style1 align-center">
+    <div class="inner">
+      <ul class="icons">
+        <li><a href="tel:+852 51139360" class="icon style2 fa-phone" alt="Call Yin Ping Lai mobile phone"><span class="label">Phone</span></a></li>
+        <li><a href="https://www.linkedin.com/in/kris-lai-29b47613a/" class="icon brands style2 fa-linkedin-in" alt="Yin Ping Lai LinkedIn profile page"><span class="label">LinkedIn</span></a></li>
+        <li><a href="https://github.com/yinpinglai" class="icon brands style2 fa-github" alt="Yin Ping Lai Github profile page"><span class="label">Github</span></a></li>
+        <li><a href="mailto:ypinglai29@gmail.com" class="icon style2 fa-envelope" alt="Send email to ypinglai29@gmail.com"><span class="label">Email</span></a></li>
+      </ul>
+      <p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../../../assets/js/jquery.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrollex.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrolly.min.js"></script>
+  <script src="../../../../assets/js/browser.min.js"></script>
+  <script src="../../../../assets/js/breakpoints.min.js"></script>
+  <script src="../../../../assets/js/util.js"></script>
+  <script src="../../../../assets/js/main.js"></script>
+</body>
+</html>
