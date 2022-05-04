@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../../../../assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="../../../../assets/css/noscript.css" /></noscript>
+  <title>Regex</title>
+</head>
+<body class="is-preload">
+  <div id="wrapper">
+    <div class="content-wrapper">
+      <h2>Regex - The UK postcode system</h2>
+      <hr />
+      <h3>Solution:</h3>
+      <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">re</span>
+
+<span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Solution</span>:
+
+UK_POSTAL_CODE_PATTERN <span style="color: #333333">=</span> <span style="background-color: #fff0f0">r&#39;^(((([A-Z]{1,2})[0-9])[A-Z])|(([A-Z])[0-9])|(([A-Z]{1,2})[0-9]{1,2})) ([0-9]([A-Z]{2}))$&#39;</span>
+
+<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">parse_uk_postal_code</span>(<span style="color: #007020">self</span>, postal_code):
+  result <span style="color: #333333">=</span> re<span style="color: #333333">.</span>match(<span style="color: #007020">self</span><span style="color: #333333">.</span>UK_POSTAL_CODE_PATTERN, postal_code)
+
+  <span style="color: #008800; font-weight: bold">if</span> result <span style="color: #000000; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">None</span>:
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #008800; font-weight: bold">None</span>
+
+  <span style="color: #008800; font-weight: bold">if</span> result<span style="color: #333333">.</span>group(<span style="color: #0000DD; font-weight: bold">2</span>) <span style="color: #000000; font-weight: bold">is</span> <span style="color: #000000; font-weight: bold">not</span> <span style="color: #008800; font-weight: bold">None</span>:
+    <span style="color: #008800; font-weight: bold">return</span> {
+      <span style="background-color: #fff0f0">&#39;isValid&#39;</span>: <span style="color: #008800; font-weight: bold">True</span>,
+      <span style="background-color: #fff0f0">&#39;outwardCode&#39;</span>: result<span style="color: #333333">.</span>group(<span style="color: #0000DD; font-weight: bold">1</span>),
+      <span style="background-color: #fff0f0">&#39;inwardCode&#39;</span>: result<span style="color: #333333">.</span>group(<span style="color: #0000DD; font-weight: bold">9</span>),
+      <span style="background-color: #fff0f0">&#39;postcodeArea&#39;</span>: result<span style="color: #333333">.</span>group(<span style="color: #0000DD; font-weight: bold">4</span>),
+      <span style="background-color: #fff0f0">&#39;districtCode&#39;</span>: result<span style="color: #333333">.</span>group(<span style="color: #0000DD; font-weight: bold">3</span>),
+      <span style="background-color: #fff0f0">&#39;subDistrict&#39;</span>: result<span style="color: #333333">.</span>group(<span style="color: #0000DD; font-weight: bold">1</span>),
+      <span style="background-color: #fff0f0">&#39;unit&#39;</span>: result<span style="color: #333333">.</span>group(<span style="color: #0000DD; font-weight: bold">10</span>),
+    }
+  <span style="color: #008800; font-weight: bold">elif</span> result<span style="color: #333333">.</span>group(<span style="color: #0000DD; font-weight: bold">5</span>) <span style="color: #000000; font-weight: bold">is</span> <span style="color: #000000; font-weight: bold">not</span> <span style="color: #008800; font-weight: bold">None</span>:
+    <span style="color: #008800; font-weight: bold">return</span> {
+      <span style="background-color: #fff0f0">&#39;isValid&#39;</span>: <span style="color: #008800; font-weight: bold">True</span>,
+      <span style="background-color: #fff0f0">&#39;outwardCode&#39;</span>: result<span style="color: #333333">.</span>group(<span style="color: #0000DD; font-weight: bold">1</span>),
+      <span style="background-color: #fff0f0">&#39;inwardCode&#39;</span>: result<span style="color: #333333">.</span>group(<span style="color: #0000DD; font-weight: bold">9</span>),
+      <span style="background-color: #fff0f0">&#39;postcodeArea&#39;</span>: result<span style="color: #333333">.</span>group(<span style="color: #0000DD; font-weight: bold">6</span>),
+      <span style="background-color: #fff0f0">&#39;districtCode&#39;</span>: result<span style="color: #333333">.</span>group(<span style="color: #0000DD; font-weight: bold">5</span>),
+      <span style="background-color: #fff0f0">&#39;subDistrict&#39;</span>: <span style="color: #008800; font-weight: bold">None</span>,
+      <span style="background-color: #fff0f0">&#39;Unit&#39;</span>: result<span style="color: #333333">.</span>group(<span style="color: #0000DD; font-weight: bold">10</span>),
+    }
+  <span style="color: #008800; font-weight: bold">else</span>:
+    <span style="color: #008800; font-weight: bold">return</span> {
+      <span style="background-color: #fff0f0">&#39;isValid&#39;</span>: <span style="color: #008800; font-weight: bold">True</span>,
+      <span style="background-color: #fff0f0">&#39;outwardCode&#39;</span>: result<span style="color: #333333">.</span>group(<span style="color: #0000DD; font-weight: bold">1</span>),
+      <span style="background-color: #fff0f0">&#39;inwardCode&#39;</span>: result<span style="color: #333333">.</span>group(<span style="color: #0000DD; font-weight: bold">9</span>),
+      <span style="background-color: #fff0f0">&#39;postcodeArea&#39;</span>: result<span style="color: #333333">.</span>group(<span style="color: #0000DD; font-weight: bold">8</span>),
+      <span style="background-color: #fff0f0">&#39;districtCode&#39;</span>: result<span style="color: #333333">.</span>group(<span style="color: #0000DD; font-weight: bold">7</span>),
+      <span style="background-color: #fff0f0">&#39;subDistrict&#39;</span>: <span style="color: #008800; font-weight: bold">None</span>,
+      <span style="background-color: #fff0f0">&#39;Unit&#39;</span>: result<span style="color: #333333">.</span>group(<span style="color: #0000DD; font-weight: bold">10</span>),
+    }
+
+<span style="color: #008800; font-weight: bold">if</span> __name__ <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&#39;__main__&#39;</span>:
+postal_code_list <span style="color: #333333">=</span> [
+  <span style="background-color: #fff0f0">&#39;AA9A 9AA&#39;</span>,
+  <span style="background-color: #fff0f0">&#39;M60 1NW&#39;</span>,
+  <span style="background-color: #fff0f0">&#39;W1A 1HQ&#39;</span>,
+  <span style="background-color: #fff0f0">&#39;EC1A 1BB&#39;</span>,
+]
+actual_results <span style="color: #333333">=</span> [Solution()<span style="color: #333333">.</span>parse_uk_postal_code(code) <span style="color: #008800; font-weight: bold">for</span> code <span style="color: #000000; font-weight: bold">in</span> postal_code_list]
+expected_results <span style="color: #333333">=</span> [
+  {<span style="background-color: #fff0f0">&#39;isValid&#39;</span>: <span style="color: #008800; font-weight: bold">True</span>, <span style="background-color: #fff0f0">&#39;outwardCode&#39;</span>: <span style="background-color: #fff0f0">&#39;AA9A&#39;</span>, <span style="background-color: #fff0f0">&#39;inwardCode&#39;</span>: <span style="background-color: #fff0f0">&#39;9AA&#39;</span>, <span style="background-color: #fff0f0">&#39;postcodeArea&#39;</span>: <span style="background-color: #fff0f0">&#39;AA&#39;</span>, <span style="background-color: #fff0f0">&#39;districtCode&#39;</span>: <span style="background-color: #fff0f0">&#39;AA9&#39;</span>, <span style="background-color: #fff0f0">&#39;subDistrict&#39;</span>: <span style="background-color: #fff0f0">&#39;AA9A&#39;</span>, <span style="background-color: #fff0f0">&#39;unit&#39;</span>: <span style="background-color: #fff0f0">&#39;AA&#39;</span>},
+  {<span style="background-color: #fff0f0">&#39;isValid&#39;</span>: <span style="color: #008800; font-weight: bold">True</span>, <span style="background-color: #fff0f0">&#39;outwardCode&#39;</span>: <span style="background-color: #fff0f0">&#39;M60&#39;</span>, <span style="background-color: #fff0f0">&#39;inwardCode&#39;</span>: <span style="background-color: #fff0f0">&#39;1NW&#39;</span>, <span style="background-color: #fff0f0">&#39;postcodeArea&#39;</span>: <span style="background-color: #fff0f0">&#39;M&#39;</span>, <span style="background-color: #fff0f0">&#39;districtCode&#39;</span>: <span style="background-color: #fff0f0">&#39;M60&#39;</span>, <span style="background-color: #fff0f0">&#39;subDistrict&#39;</span>: <span style="color: #008800; font-weight: bold">None</span>, <span style="background-color: #fff0f0">&#39;Unit&#39;</span>: <span style="background-color: #fff0f0">&#39;NW&#39;</span>},
+  {<span style="background-color: #fff0f0">&#39;isValid&#39;</span>: <span style="color: #008800; font-weight: bold">True</span>, <span style="background-color: #fff0f0">&#39;outwardCode&#39;</span>: <span style="background-color: #fff0f0">&#39;W1A&#39;</span>, <span style="background-color: #fff0f0">&#39;inwardCode&#39;</span>: <span style="background-color: #fff0f0">&#39;1HQ&#39;</span>, <span style="background-color: #fff0f0">&#39;postcodeArea&#39;</span>: <span style="background-color: #fff0f0">&#39;W&#39;</span>, <span style="background-color: #fff0f0">&#39;districtCode&#39;</span>: <span style="background-color: #fff0f0">&#39;W1&#39;</span>, <span style="background-color: #fff0f0">&#39;subDistrict&#39;</span>: <span style="background-color: #fff0f0">&#39;W1A&#39;</span>, <span style="background-color: #fff0f0">&#39;unit&#39;</span>: <span style="background-color: #fff0f0">&#39;HQ&#39;</span>},
+  {<span style="background-color: #fff0f0">&#39;isValid&#39;</span>: <span style="color: #008800; font-weight: bold">True</span>, <span style="background-color: #fff0f0">&#39;outwardCode&#39;</span>: <span style="background-color: #fff0f0">&#39;EC1A&#39;</span>, <span style="background-color: #fff0f0">&#39;inwardCode&#39;</span>: <span style="background-color: #fff0f0">&#39;1BB&#39;</span>, <span style="background-color: #fff0f0">&#39;postcodeArea&#39;</span>: <span style="background-color: #fff0f0">&#39;EC&#39;</span>, <span style="background-color: #fff0f0">&#39;districtCode&#39;</span>: <span style="background-color: #fff0f0">&#39;EC1&#39;</span>, <span style="background-color: #fff0f0">&#39;subDistrict&#39;</span>: <span style="background-color: #fff0f0">&#39;EC1A&#39;</span>, <span style="background-color: #fff0f0">&#39;unit&#39;</span>: <span style="background-color: #fff0f0">&#39;BB&#39;</span>},
+]
+<span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(<span style="color: #007020">len</span>(postal_code_list)):
+  actual_result <span style="color: #333333">=</span> actual_results[i]
+  expected_result <span style="color: #333333">=</span> expected_results[i]
+  <span style="color: #008800; font-weight: bold">assert</span> actual_result <span style="color: #333333">==</span> expected_result
+  <span style="color: #007020">print</span>(f<span style="background-color: #fff0f0">&#39;Case {i + 1}: Passed&#39;</span>)
+</pre></div>
+    <br />
+    <h3>Output:</h3>
+    <img src="./images/regex.png" alt="The output of the UK postal code parser" />
+    </div>
+  </div>
+
+   <!-- Footer -->
+   <footer class="wrapper style1 align-center">
+    <div class="inner">
+      <ul class="icons">
+        <li><a href="tel:+852 51139360" class="icon style2 fa-phone" alt="Call Yin Ping Lai mobile phone"><span class="label">Phone</span></a></li>
+        <li><a href="https://www.linkedin.com/in/kris-lai-29b47613a/" class="icon brands style2 fa-linkedin-in" alt="Yin Ping Lai LinkedIn profile page"><span class="label">LinkedIn</span></a></li>
+        <li><a href="https://github.com/yinpinglai" class="icon brands style2 fa-github" alt="Yin Ping Lai Github profile page"><span class="label">Github</span></a></li>
+        <li><a href="mailto:ypinglai29@gmail.com" class="icon style2 fa-envelope" alt="Send email to ypinglai29@gmail.com"><span class="label">Email</span></a></li>
+      </ul>
+      <p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../../../assets/js/jquery.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrollex.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrolly.min.js"></script>
+  <script src="../../../../assets/js/browser.min.js"></script>
+  <script src="../../../../assets/js/breakpoints.min.js"></script>
+  <script src="../../../../assets/js/util.js"></script>
+  <script src="../../../../assets/js/main.js"></script>
+</body>
+</html>
