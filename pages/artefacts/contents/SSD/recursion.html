@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../../../../assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="../../../../assets/css/noscript.css" /></noscript>
+  <title>Recursion</title>
+</head>
+<body class="is-preload">
+  <div id="wrapper">
+    <div class="content-wrapper">
+      <h2>Recursion - The towers of Hanoi problem</h2>
+      <hr />
+      <h3>Solution:</h3>
+      <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Solution</span>:
+
+  <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">tower_of_hanoi</span>(<span style="color: #007020">self</span>, n, source, destination, auxiliary):
+  <span style="color: #DD4422">&#39;&#39;&#39;Recursive function for solving the tower of hanoi problem&#39;&#39;&#39;</span>
+
+  <span style="color: #888888"># Base case for the recursion function</span>
+  <span style="color: #008800; font-weight: bold">if</span> n <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">1</span>:
+    <span style="color: #007020">print</span>(f<span style="background-color: #fff0f0">&#39;Move disk 1 from source {source} to destination {destination}&#39;</span>)
+    <span style="color: #008800; font-weight: bold">return</span>
+  
+  <span style="color: #888888"># Move from source to auxiliary</span>
+  <span style="color: #007020">self</span><span style="color: #333333">.</span>tower_of_hanoi(n <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>, source, auxiliary, destination)
+
+  <span style="color: #007020">print</span>(f<span style="background-color: #fff0f0">&#39;Move disk {n} from source {source} to destination {destination}&#39;</span>)
+
+  <span style="color: #888888"># Move from auxiliary to destination</span>
+  <span style="color: #007020">self</span><span style="color: #333333">.</span>tower_of_hanoi(n<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>, auxiliary, destination, source)
+
+<span style="color: #008800; font-weight: bold">if</span> __name__ <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&#39;__main__&#39;</span>:
+n <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">4</span>
+Solution()<span style="color: #333333">.</span>tower_of_hanoi(n, <span style="background-color: #fff0f0">&#39;A&#39;</span>, <span style="background-color: #fff0f0">&#39;B&#39;</span>, <span style="background-color: #fff0f0">&#39;C&#39;</span>)
+</pre></div>
+    <br />
+    <h3>Output:</h3>
+    <img src="./images/recursion.png" alt="The output of the solution for the tower of hanoi problem" />
+    </div>
+  </div>
+
+   <!-- Footer -->
+   <footer class="wrapper style1 align-center">
+    <div class="inner">
+      <ul class="icons">
+        <li><a href="tel:+852 51139360" class="icon style2 fa-phone" alt="Call Yin Ping Lai mobile phone"><span class="label">Phone</span></a></li>
+        <li><a href="https://www.linkedin.com/in/kris-lai-29b47613a/" class="icon brands style2 fa-linkedin-in" alt="Yin Ping Lai LinkedIn profile page"><span class="label">LinkedIn</span></a></li>
+        <li><a href="https://github.com/yinpinglai" class="icon brands style2 fa-github" alt="Yin Ping Lai Github profile page"><span class="label">Github</span></a></li>
+        <li><a href="mailto:ypinglai29@gmail.com" class="icon style2 fa-envelope" alt="Send email to ypinglai29@gmail.com"><span class="label">Email</span></a></li>
+      </ul>
+      <p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../../../assets/js/jquery.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrollex.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrolly.min.js"></script>
+  <script src="../../../../assets/js/browser.min.js"></script>
+  <script src="../../../../assets/js/breakpoints.min.js"></script>
+  <script src="../../../../assets/js/util.js"></script>
+  <script src="../../../../assets/js/main.js"></script>
+</body>
+</html>
