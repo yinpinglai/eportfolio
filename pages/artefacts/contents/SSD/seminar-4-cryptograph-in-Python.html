@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../../../../assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="../../../../assets/css/noscript.css" /></noscript>
+  <title>Seminar 4 - The Cryptography in Python</title>
+</head>
+<body class="is-preload">
+  <div id="wrapper">
+    <div class="content-wrapper">
+      <h2>Seminar 4 - The Cryptography in Python</h2>
+      <hr />
+      <p>Full source code: <a href="https://github.com/yinpinglai/codio_activities/blob/main/exploring_a_sample_command_shell_with_encrpytion.py" target="_blank">Exploring a sample Python shell with encryption enabled source code</a></p>
+      <h3>The Encryption Implementation:</h3>
+      <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">do_encrypt</span>(<span style="color: #007020">self</span>, inp):
+    input_password <span style="color: #333333">=</span> inp[<span style="color: #0000DD; font-weight: bold">0</span>]
+    input_data <span style="color: #333333">=</span> inp[<span style="color: #0000DD; font-weight: bold">1</span>]
+    export_data_file <span style="color: #333333">=</span> inp[<span style="color: #0000DD; font-weight: bold">2</span>]
+
+    password <span style="color: #333333">=</span> input_password<span style="color: #333333">.</span>encode(<span style="background-color: #fff0f0">&#39;utf-8&#39;</span>)
+    salt <span style="color: #333333">=</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>_generate_salt()
+    kdf <span style="color: #333333">=</span> PBKDF2HMAC(algorithm<span style="color: #333333">=</span>hashes<span style="color: #333333">.</span>SHA256(),
+                     length<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">32</span>,
+                     salt<span style="color: #333333">=</span>salt,
+                     iterations<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">310000</span>)
+    key <span style="color: #333333">=</span> base64<span style="color: #333333">.</span>urlsafe_b64encode(kdf<span style="color: #333333">.</span>derive(password))
+    fernet <span style="color: #333333">=</span> Fernet(key)
+
+    <span style="color: #008800; font-weight: bold">try</span>:
+      <span style="color: #008800; font-weight: bold">with</span> <span style="color: #007020">open</span>(export_data_file, <span style="background-color: #fff0f0">&#39;rb&#39;</span>) <span style="color: #008800; font-weight: bold">as</span> export_file:
+        encrypted_data <span style="color: #333333">=</span> fernet<span style="color: #333333">.</span>encrypt(input_data)
+        export_data_file<span style="color: #333333">.</span>write(encrypted_data)
+      <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&#39;Saved to {}&#39;</span><span style="color: #333333">.</span>format(export_data_file))
+    <span style="color: #008800; font-weight: bold">except</span> <span style="color: #FF0000; font-weight: bold">Exception</span> <span style="color: #008800; font-weight: bold">as</span> exception:
+      <span style="color: #007020">print</span>(exception)
+</pre></div><br />
+      <h3>The Decryption Implementation:</h3>
+      <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">do_decrypt</span>(<span style="color: #007020">self</span>, inp):
+    input_password <span style="color: #333333">=</span> inp[<span style="color: #0000DD; font-weight: bold">0</span>]
+    encrypted_file_path <span style="color: #333333">=</span> inp[<span style="color: #0000DD; font-weight: bold">1</span>]
+  
+    password <span style="color: #333333">=</span> input_password<span style="color: #333333">.</span>encode(<span style="background-color: #fff0f0">&#39;utf-8&#39;</span>)
+    salt <span style="color: #333333">=</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>_generate_salt()
+    kdf <span style="color: #333333">=</span> PBKDF2HMAC(algorithm<span style="color: #333333">=</span>hashes<span style="color: #333333">.</span>SHA256(),
+                     length<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">32</span>,
+                     salt<span style="color: #333333">=</span>salt,
+                     iterations<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">310000</span>)
+    key <span style="color: #333333">=</span> base64<span style="color: #333333">.</span>urlsafe_b64encode(kdf<span style="color: #333333">.</span>derive(password))
+    fernet <span style="color: #333333">=</span> Fernet(key)
+    <span style="color: #008800; font-weight: bold">try</span>:
+      <span style="color: #008800; font-weight: bold">with</span> <span style="color: #007020">open</span>(encrypted_file_path, <span style="background-color: #fff0f0">&#39;rb&#39;</span>) <span style="color: #008800; font-weight: bold">as</span> input_file:
+        data <span style="color: #333333">=</span> input_file<span style="color: #333333">.</span>read()
+        decrypted_data <span style="color: #333333">=</span> fernet<span style="color: #333333">.</span>decrypt(data)
+        <span style="color: #007020">print</span>(<span style="color: #007020">str</span>(decrypted_data))
+    <span style="color: #008800; font-weight: bold">except</span> <span style="color: #FF0000; font-weight: bold">Exception</span> <span style="color: #008800; font-weight: bold">as</span> exception:
+      <span style="color: #007020">print</span>(exception)
+</pre></div><br />
+
+      <blockquote>Why did you select the algorithm you chose?</blockquote>
+      <p>OWASP (N.D.) indicates that the attackers are hacking password with either brute force attack or using dictionary or word list to guess the password. It recommends the PBKDF2 hashing algorithm as one of the preferred hashing algorithms for protecting password. Also, append an random salt during the encryption process can increase the hacking cost for attackers (1Password N.D.). So, I choose it for implementing this task.</p>
+      <blockquote>Would it meet the GDPR regulations? Justify your answer.</blockquote>
+      <p>Yes. It meet the GDPR regulations because it hashes the data before store it into the repository. It can mitigate the damage of data exposure as the attackers are difficult to obtain the information. (Inversegravity 2019.)</p>
+      <p></p>
+      <h3>References</h3>
+      <ul style="list-style: none;">
+        <li>[1] OWASP. (N.D.) Password Storage Cheat Sheet. [Online] Available from: <a href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html" target="_blank">https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html</a>. [Accessed on 10 May 2022].</li>
+        <li>[2] 1Password. (N.D.) How PBKDF2 strengthens your 1Password account password. [Online] Available from: <a href="https://support.1password.com/pbkdf2/" target="_blank">https://support.1password.com/pbkdf2/</a>. [Accessed on 10 May 2022].</li>
+        <li>[3] Inversegravity. (2019) GDPR, Passwords, Hashing and You. [Online] Available from: <a href="https://inversegravity.net/2019/gdpr-passwords-hashing-you/" target="_blank">https://inversegravity.net/2019/gdpr-passwords-hashing-you/</a>. [Accessed on 10 May 2022].</li>
+      </ul>
+    </div>
+  </div>
+
+   <!-- Footer -->
+   <footer class="wrapper style1 align-center">
+    <div class="inner">
+      <ul class="icons">
+        <li><a href="tel:+852 51139360" class="icon style2 fa-phone" alt="Call Yin Ping Lai mobile phone"><span class="label">Phone</span></a></li>
+        <li><a href="https://www.linkedin.com/in/kris-lai-29b47613a/" class="icon brands style2 fa-linkedin-in" alt="Yin Ping Lai LinkedIn profile page"><span class="label">LinkedIn</span></a></li>
+        <li><a href="https://github.com/yinpinglai" class="icon brands style2 fa-github" alt="Yin Ping Lai Github profile page"><span class="label">Github</span></a></li>
+        <li><a href="mailto:ypinglai29@gmail.com" class="icon style2 fa-envelope" alt="Send email to ypinglai29@gmail.com"><span class="label">Email</span></a></li>
+      </ul>
+      <p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../../../assets/js/jquery.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrollex.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrolly.min.js"></script>
+  <script src="../../../../assets/js/browser.min.js"></script>
+  <script src="../../../../assets/js/breakpoints.min.js"></script>
+  <script src="../../../../assets/js/util.js"></script>
+  <script src="../../../../assets/js/main.js"></script>
+</body>
+</html>
