@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../../../../assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="../../../../assets/css/noscript.css" /></noscript>
+  <title>Collaborative Discussion 2 - Summary Post</title>
+</head>
+<body class="is-preload">
+  <div id="wrapper">
+    <div class="content-wrapper">
+      <h2>Collaborative Discussion 2 - Summary Post</h2>
+      <hr />
+      <br />
+      <p>In this post, I will follow up and summarize for my initial post. I saw a lot of peers were analyzing the reasons of why using TrueCrypt is not recommended, some of them provided alternatives as a replacement for TrueCrypt, such as BitLocker or VeraCrypt. I think it is worth to try and compare among those tools in the future.</p>
+      <p>The TrueCrypt suite was one of the well-known disk encryption tools in the PC world, but it was discounted in 2014. Andreas J. and Nicolas G. (2014) reviewed the bootloader and the Windows kernel driver source code and discovered a branch of security vulnerabilities from the TrueCrypt suites. In addition, the analysis report also revealed the TrueCrypt source code had a bad code quality and standard, which was too hard to maintain.</p>
+      <p>From the analysis report, the most severe attack is the problem of using the weak derivation algorithm to encrypt the volume header. It used the PBKDF2 algorithm to encrypt the TrueCrypt header, and developers declared a few iteration counts during the encryption process. As a result, the attacker can exploit this weakness to acquire the encrypted TrueCrypt volume and extract data from it.</p>
+      <p>Below Ontology figures show the weakness and severity of those identified vulnerabilities.</p>
+      <img src="./images/true_crypt_figure1.png" alt="Figure 1: The relationship diagram between classes" /><br />
+      <strong><i>Figure 1: The relationship diagram between classes</i></strong><br />
+      <img src="./images/true_crypt_figure2.png" alt="Figure 2: The Graph view for the Ontology design" /><br />
+      <strong><i>Figure 2: The Graph view for the Ontology design</i></strong><br /><br />
+      <blockquote>Would you be prepared to recommend TrueCrypt to a friend as a secure storage environment? What caveats (if any) would you add?</blockquote>
+      <p>If I get a chance to recommend it to my friend someday, I will add a caveat: "All your data will be exposed eventually and should consider alternative option instead" message for them. Moreover, as we can see, there are many ways to decrypt and acquire data without authorized access from Pranshu B. (2015)’s post. Consequently, TrueCrypt is not a secure data encryption tool for protecting your data. It has chances of data exposure and we should not use it anymore.</p>
+      <h3>References</h3>
+      <ul style="list-style: none;">
+        <li>[1] Andreas, J. & Nicolas, G. (2014) Open Crypto Audit Project TrueCrypt Security Assessment. [Online] Available from: <a href="https://opencryptoaudit.org/reports/iSec_Final_Open_Crypto_Audit_Project_TrueCrypt_Security_Assessment.pdf" target="_blank">https://opencryptoaudit.org/reports/iSec_Final_Open_Crypto_Audit_Project_TrueCrypt_Security_Assessment.pdf</a>. [Accessed on 8 May 2022].</li>        
+        <li>[2] Pranshu B. (2015) TrueCrypt Security: Securing Yourself against Practical TrueCrypt Attacks. [Online] Available from: <a href="https://resources.infosecinstitute.com/topic/defeating-truecrypt-practical-attacks-truecrypt-security/" target="_blank">https://resources.infosecinstitute.com/topic/defeating-truecrypt-practical-attacks-truecrypt-security/</a>. [Accessed on 9 May 2022].</li>
+      </ul>
+    </div>
+  </div>
+
+   <!-- Footer -->
+   <footer class="wrapper style1 align-center">
+    <div class="inner">
+      <ul class="icons">
+        <li><a href="tel:+852 51139360" class="icon style2 fa-phone" alt="Call Yin Ping Lai mobile phone"><span class="label">Phone</span></a></li>
+        <li><a href="https://www.linkedin.com/in/kris-lai-29b47613a/" class="icon brands style2 fa-linkedin-in" alt="Yin Ping Lai LinkedIn profile page"><span class="label">LinkedIn</span></a></li>
+        <li><a href="https://github.com/yinpinglai" class="icon brands style2 fa-github" alt="Yin Ping Lai Github profile page"><span class="label">Github</span></a></li>
+        <li><a href="mailto:ypinglai29@gmail.com" class="icon style2 fa-envelope" alt="Send email to ypinglai29@gmail.com"><span class="label">Email</span></a></li>
+      </ul>
+      <p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../../../assets/js/jquery.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrollex.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrolly.min.js"></script>
+  <script src="../../../../assets/js/browser.min.js"></script>
+  <script src="../../../../assets/js/breakpoints.min.js"></script>
+  <script src="../../../../assets/js/util.js"></script>
+  <script src="../../../../assets/js/main.js"></script>
+</body>
+</html>
