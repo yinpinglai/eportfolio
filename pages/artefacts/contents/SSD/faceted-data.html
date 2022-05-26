@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../../../../assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="../../../../assets/css/noscript.css" /></noscript>
+  <title>Faceted Data</title>
+</head>
+<body class="is-preload">
+  <div id="wrapper">
+    <div class="content-wrapper">
+      <h2>Faceted Data</h2>
+      <hr />
+      <br />
+      <blockquote>Do you think this is a good approach to protect systems from data leakage? What are the pros and cons?</blockquote>
+      <p>Yes, as the proposed approach is to create a generic function for protecting those sensitive information, such as masking the password for users. </p>
+      <blockquote>What are the pros and cons?</blockquote>
+      <h3>Pros:</h3>
+      <ul>
+        <li>It is non-invasive as it was designed to be a pure function.</li>
+        <li>Easy to configure by appending the decorator of the function.</li>
+      </ul>
+      <h3>Cons:</h3>
+      <ul>
+        <li>Difficulty for debugging if the function was sealed into a package. It is difficult to debug the function.</li>
+        <li>Extra overhead as the program needs to call the function for processing.</li>
+      </ul>
+      <blockquote>Create a basic outline design of how you would create such a system in Python. </blockquote>
+      <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">FacetedData</span>:
+    <span style="color: #DD4422">&#39;&#39;&#39;Generic class for creating protected functions&#39;&#39;&#39;</span>
+
+    <span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">enum</span> <span style="color: #008800; font-weight: bold">import</span> Enum
+
+    <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Context</span>(Enum):
+        <span style="color: #DD4422">&#39;&#39;&#39;There can be two contexts: NORMAL (unsafe) and SAFE&#39;&#39;&#39;</span>
+        UNSAFE <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;UNSAFE&#39;</span>,
+        PROTECTED <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;PROTECTED&#39;</span>,
+
+    <span style="color: #555555; font-weight: bold">@staticmethod</span>
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">secure</span>(func):
+        <span style="color: #DD4422">&#39;&#39;&#39;Change the context before and after executing the actual function&#39;&#39;&#39;</span>
+        <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">inner</span>(<span style="color: #333333">*</span>args, <span style="color: #333333">**</span>kwargs):
+            FacetedData<span style="color: #333333">.</span>secure_context <span style="color: #333333">=</span> FacetedData<span style="color: #333333">.</span>Context<span style="color: #333333">.</span>PROTECTED
+            func(<span style="color: #333333">*</span>args, <span style="color: #333333">**</span>kwargs)
+            FacetedData<span style="color: #333333">.</span>secure_context <span style="color: #333333">=</span> FacetedData<span style="color: #333333">.</span>Context<span style="color: #333333">.</span>UNSAFE
+        <span style="color: #008800; font-weight: bold">return</span> inner
+
+    <span style="color: #555555; font-weight: bold">@staticmethod</span>
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">protect</span>(func):
+        <span style="color: #DD4422">&#39;&#39;&#39;&#39;&#39;&#39;</span>
+        <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">inner</span>(<span style="color: #333333">*</span>args, <span style="color: #333333">**</span>kwargs):
+            <span style="color: #008800; font-weight: bold">if</span> FacetedData<span style="color: #333333">.</span>secure_context <span style="color: #333333">==</span> FacetedData<span style="color: #333333">.</span>Context<span style="color: #333333">.</span>UNSAFE:
+                <span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&#39;*&#39;</span> <span style="color: #333333">*</span> <span style="color: #0000DD; font-weight: bold">6</span>
+            <span style="color: #008800; font-weight: bold">return</span> func(<span style="color: #333333">*</span>args, <span style="color: #333333">**</span>kwargs)
+        <span style="color: #008800; font-weight: bold">return</span> inner
+
+<span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Employee</span>:
+    <span style="color: #DD4422">&#39;&#39;&#39;The employee model&#39;&#39;&#39;</span>
+
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">__init__</span>(<span style="color: #007020">self</span>, name: <span style="color: #007020">str</span>, emergency_contact: <span style="color: #007020">str</span>, salary: <span style="color: #007020">float</span>, birth_date: <span style="color: #007020">str</span>) <span style="color: #333333">-&gt;</span> <span style="color: #008800; font-weight: bold">None</span>:
+        <span style="color: #007020">self</span><span style="color: #333333">.</span>_name <span style="color: #333333">=</span> name
+        <span style="color: #007020">self</span><span style="color: #333333">.</span>_emergency_contact <span style="color: #333333">=</span> emergency_contact
+        <span style="color: #007020">self</span><span style="color: #333333">.</span>_salary <span style="color: #333333">=</span> salary
+        <span style="color: #007020">self</span><span style="color: #333333">.</span>_birth_date <span style="color: #333333">=</span> birth_date
+
+    <span style="color: #555555; font-weight: bold">@property</span>
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">name</span>(<span style="color: #007020">self</span>):
+        <span style="color: #DD4422">&#39;&#39;&#39;Employee\&#39;s name, not protected&#39;&#39;&#39;</span>
+        <span style="color: #008800; font-weight: bold">return</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>_name
+
+    <span style="color: #555555; font-weight: bold">@property</span>
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">emergency_contact</span>(<span style="color: #007020">self</span>):
+        <span style="color: #DD4422">&#39;&#39;&#39;Employee\&#39;s emergency contact, not protected&#39;&#39;&#39;</span>
+        <span style="color: #008800; font-weight: bold">return</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>_emergency_contact
+
+    <span style="color: #555555; font-weight: bold">@property</span>
+    <span style="color: #555555; font-weight: bold">@FacetedData</span><span style="color: #333333">.</span>protect
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">salary</span>(<span style="color: #007020">self</span>):
+        <span style="color: #DD4422">&#39;&#39;&#39;The salary field is protected field and do not print directly&#39;&#39;&#39;</span>
+        <span style="color: #008800; font-weight: bold">return</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>_salary
+
+    <span style="color: #555555; font-weight: bold">@property</span>
+    <span style="color: #555555; font-weight: bold">@FacetedData</span><span style="color: #333333">.</span>protect
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">birth_date</span>(<span style="color: #007020">self</span>):
+        <span style="color: #DD4422">&#39;&#39;&#39;The birth date field is protected field and do not print directly&#39;&#39;&#39;</span>
+        <span style="color: #008800; font-weight: bold">return</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>_birth_date
+
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">__repr__</span>(<span style="color: #007020">self</span>):
+        <span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&#39;&#39;&#39;</span>
+<span style="background-color: #fff0f0">            Employee:</span>
+<span style="background-color: #fff0f0">                name: {},</span>
+<span style="background-color: #fff0f0">                emergency contact: {},</span>
+<span style="background-color: #fff0f0">                salary: {},</span>
+<span style="background-color: #fff0f0">                birth date: {},</span>
+<span style="background-color: #fff0f0">        &#39;&#39;&#39;</span><span style="color: #333333">.</span>format(<span style="color: #007020">self</span><span style="color: #333333">.</span>name, <span style="color: #007020">self</span><span style="color: #333333">.</span>emergency_contact, <span style="color: #007020">self</span><span style="color: #333333">.</span>salary, <span style="color: #007020">self</span><span style="color: #333333">.</span>birth_date)
+
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">__str__</span>(<span style="color: #007020">self</span>):
+        <span style="color: #008800; font-weight: bold">return</span> f<span style="background-color: #fff0f0">&#39;Employee</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\&#39;</span><span style="background-color: #fff0f0">s name: {self.name}, emergency contact is: {self.emergency_contact}, salary: {self.salary} and birth date is: {self.birth_date}&#39;</span>
+    
+
+<span style="color: #008800; font-weight: bold">if</span> __name__ <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&#39;__main__&#39;</span>:
+    employee <span style="color: #333333">=</span> Employee(<span style="background-color: #fff0f0">&#39;Yin Ping, Lai&#39;</span>, <span style="background-color: #fff0f0">&#39;852-3243132&#39;</span>, <span style="color: #0000DD; font-weight: bold">59999</span>, <span style="background-color: #fff0f0">&#39;1991-04-15&#39;</span>)
+
+    <span style="color: #555555; font-weight: bold">@FacetedData</span><span style="color: #333333">.</span>secure
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">examine_employee</span>(employee: Employee):
+        <span style="color: #DD4422">&#39;&#39;&#39;The examine employee is safe. As a result, all fields will be printed without masking&#39;&#39;&#39;</span>
+        <span style="color: #007020">print</span>(employee<span style="color: #333333">.</span>__repr__)
+
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">print_employee</span>(employee: Employee):
+        <span style="color: #DD4422">&#39;&#39;&#39;The print employee function is not safe. As a result, some fields will be hidden by Faceted Data&#39;&#39;&#39;</span>
+        <span style="color: #007020">print</span>(employee<span style="color: #333333">.</span>__repr__)
+
+    examine_employee(employee)
+    print_employee(employee)
+</pre></div>
+    <h3>The output is:</h3>
+    <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #333333">&lt;</span>bound method Employee<span style="color: #333333">.</span>__repr__ of 
+      Employee:
+      name: Yin Ping, Lai,
+      emergency contact: <span style="color: #0000DD; font-weight: bold">852</span><span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">3243132</span>,
+      salary: <span style="color: #0000DD; font-weight: bold">59999</span>,
+      birth date: <span style="color: #0000DD; font-weight: bold">1991</span><span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">04</span><span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">15</span>,
+<span style="color: #333333">&gt;</span>
+<span style="color: #333333">&lt;</span>bound method Employee<span style="color: #333333">.</span>__repr__ of 
+  Employee:
+      name: Yin Ping, Lai,
+      emergency contact: <span style="color: #0000DD; font-weight: bold">852</span><span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">3243132</span>,
+      salary: <span style="color: #333333">******</span>,
+      birth date: <span style="color: #333333">******</span>,
+<span style="color: #333333">&gt;</span>
+</pre></div>
+
+    </div>
+  </div>
+
+   <!-- Footer -->
+   <footer class="wrapper style1 align-center">
+    <div class="inner">
+      <ul class="icons">
+        <li><a href="tel:+852 51139360" class="icon style2 fa-phone" alt="Call Yin Ping Lai mobile phone"><span class="label">Phone</span></a></li>
+        <li><a href="https://www.linkedin.com/in/kris-lai-29b47613a/" class="icon brands style2 fa-linkedin-in" alt="Yin Ping Lai LinkedIn profile page"><span class="label">LinkedIn</span></a></li>
+        <li><a href="https://github.com/yinpinglai" class="icon brands style2 fa-github" alt="Yin Ping Lai Github profile page"><span class="label">Github</span></a></li>
+        <li><a href="mailto:ypinglai29@gmail.com" class="icon style2 fa-envelope" alt="Send email to ypinglai29@gmail.com"><span class="label">Email</span></a></li>
+      </ul>
+      <p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../../../assets/js/jquery.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrollex.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrolly.min.js"></script>
+  <script src="../../../../assets/js/browser.min.js"></script>
+  <script src="../../../../assets/js/breakpoints.min.js"></script>
+  <script src="../../../../assets/js/util.js"></script>
+  <script src="../../../../assets/js/main.js"></script>
+</body>
+</html>
