@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../../../../assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="../../../../assets/css/noscript.css" /></noscript>
+  <title>Codio Activity - PyTest</title>
+</head>
+<body class="is-preload">
+  <div id="wrapper">
+    <div class="content-wrapper">
+      <h2>Codio Activity - PyTest</h2>
+      <hr />
+      <br />
+      <h3>The source code of the wallet class</h3>
+      <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">InsufficientAmount</span>(<span style="color: #FF0000; font-weight: bold">Exception</span>):
+    <span style="color: #008800; font-weight: bold">pass</span>
+
+<span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Wallet</span>(<span style="color: #007020">object</span>):
+
+  <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">__init__</span>(<span style="color: #007020">self</span>, initial_amount<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span>): 
+      <span style="color: #007020">self</span><span style="color: #333333">.</span>balance <span style="color: #333333">=</span> initial_amount 
+
+  <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">spend_cash</span>(<span style="color: #007020">self</span>, amount): 
+
+      <span style="color: #008800; font-weight: bold">if</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>balance <span style="color: #333333">&lt;</span> amount: 
+          <span style="color: #008800; font-weight: bold">raise</span> InsufficientAmount(<span style="background-color: #fff0f0">&#39;Not enough available to spend {}&#39;</span><span style="color: #333333">.</span>format(amount)) 
+
+      <span style="color: #007020">self</span><span style="color: #333333">.</span>balance <span style="color: #333333">-=</span> amount 
+
+  <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">add_cash</span>(<span style="color: #007020">self</span>, amount): 
+      <span style="color: #007020">self</span><span style="color: #333333">.</span>balance <span style="color: #333333">+=</span> amount
+    </pre></div>
+    <br />
+      <h3>The source code of the wallet testing class</h3>
+      <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">pytest</span> 
+
+<span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">wallet</span> <span style="color: #008800; font-weight: bold">import</span> Wallet, InsufficientAmount 
+
+<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">test_default_initial_amount</span>():
+    wallet <span style="color: #333333">=</span> Wallet()
+    <span style="color: #008800; font-weight: bold">assert</span> wallet<span style="color: #333333">.</span>balance <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">0</span> 
+
+<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">test_setting_initial_amount</span>(): 
+    wallet <span style="color: #333333">=</span> Wallet(<span style="color: #0000DD; font-weight: bold">100</span>) 
+    <span style="color: #008800; font-weight: bold">assert</span> wallet<span style="color: #333333">.</span>balance <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">100</span> 
+
+<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">test_wallet_add_cash</span>(): 
+    wallet <span style="color: #333333">=</span> Wallet(<span style="color: #0000DD; font-weight: bold">10</span>) 
+    wallet<span style="color: #333333">.</span>add_cash(<span style="color: #0000DD; font-weight: bold">90</span>) 
+    <span style="color: #008800; font-weight: bold">assert</span> wallet<span style="color: #333333">.</span>balance <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">100</span> 
+
+<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">test_wallet_spend_cash</span>(): 
+    wallet <span style="color: #333333">=</span> Wallet(<span style="color: #0000DD; font-weight: bold">20</span>) 
+    wallet<span style="color: #333333">.</span>spend_cash(<span style="color: #0000DD; font-weight: bold">10</span>) 
+    <span style="color: #008800; font-weight: bold">assert</span> wallet<span style="color: #333333">.</span>balance <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">10</span>
+
+<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">test_wallet_spend_cash_raises_exception_on_insufficient_amount</span>(): 
+    wallet <span style="color: #333333">=</span> Wallet() 
+    <span style="color: #008800; font-weight: bold">with</span> pytest<span style="color: #333333">.</span>raises(InsufficientAmount):
+        wallet<span style="color: #333333">.</span>spend_cash(<span style="color: #0000DD; font-weight: bold">100</span>)
+</pre></div>
+    <br />
+    <div>I ran the testing script with below command:</div>
+    <code>$ pytest -q test_wallet.py</code>
+    <br />
+    <br />
+    <div>I saw the below output:</div>
+    <img src="./images/codio-activity-pytest-result-1.png" />
+    <br />
+    <br />
+    <br />
+    <blockquote>Amend the code so that the tests fail.</blockquote>
+    <div>So, I modified the source code of the wallet class</div>
+    <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">InsufficientAmount</span>(<span style="color: #FF0000; font-weight: bold">Exception</span>):
+      <span style="color: #008800; font-weight: bold">pass</span>
+
+<span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Wallet</span>(<span style="color: #007020">object</span>):
+
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">__init__</span>(<span style="color: #007020">self</span>, initial_amount<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span>): 
+        <span style="color: #007020">self</span><span style="color: #333333">.</span>balance <span style="color: #333333">=</span> initial_amount 
+
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">spend_cash</span>(<span style="color: #007020">self</span>, amount): 
+
+        <span style="color: #008800; font-weight: bold">if</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>balance <span style="color: #333333">&lt;</span> amount: 
+            <span style="color: #008800; font-weight: bold">raise</span> InsufficientAmount(<span style="background-color: #fff0f0">&#39;Not enough available to spend {}&#39;</span><span style="color: #333333">.</span>format(amount)) 
+
+        <span style="color: #007020">self</span><span style="color: #333333">.</span>balance <span style="color: #333333">/=</span> amount 
+
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">add_cash</span>(<span style="color: #007020">self</span>, amount): 
+        <span style="color: #007020">self</span><span style="color: #333333">.</span>balance <span style="color: #333333">*=</span> amount
+</pre></div>
+    <br />
+    <br />
+    <div>I re-ran the testing script with below command:</div>
+    <code>$ pytest -q test_wallet.py</code>
+    <br />
+    <br />
+    <div>I saw the below output:</div>
+    <img src="./images/codio-activity-pytest-result-2.png" />
+    <br />
+    <br />
+    <br />
+    </div>
+  </div>
+
+   <!-- Footer -->
+   <footer class="wrapper style1 align-center">
+    <div class="inner">
+      <ul class="icons">
+        <li><a href="tel:+852 51139360" class="icon style2 fa-phone" alt="Call Yin Ping Lai mobile phone"><span class="label">Phone</span></a></li>
+        <li><a href="https://www.linkedin.com/in/kris-lai-29b47613a/" class="icon brands style2 fa-linkedin-in" alt="Yin Ping Lai LinkedIn profile page"><span class="label">LinkedIn</span></a></li>
+        <li><a href="https://github.com/yinpinglai" class="icon brands style2 fa-github" alt="Yin Ping Lai Github profile page"><span class="label">Github</span></a></li>
+        <li><a href="mailto:ypinglai29@gmail.com" class="icon style2 fa-envelope" alt="Send email to ypinglai29@gmail.com"><span class="label">Email</span></a></li>
+      </ul>
+      <p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../../../assets/js/jquery.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrollex.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrolly.min.js"></script>
+  <script src="../../../../assets/js/browser.min.js"></script>
+  <script src="../../../../assets/js/breakpoints.min.js"></script>
+  <script src="../../../../assets/js/util.js"></script>
+  <script src="../../../../assets/js/main.js"></script>
+</body>
+</html>
