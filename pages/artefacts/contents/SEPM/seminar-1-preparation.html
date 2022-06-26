@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../../../../assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="../../../../assets/css/noscript.css" /></noscript>
+  <title>Seminar 1 Preparation - Requirements Gathering</title>
+</head>
+<body class="is-preload">
+  <div id="wrapper">
+    <div class="content-wrapper">
+      <h2>Seminar 1 Preparation - Requirements Gathering</h2>
+      <hr />
+      <br />
+      <blockquote>Read the Behaviour Driven Development (2020) pages and then use the Gherkin language to create a Gherkin sequence that addresses ONE of the following examples:</blockquote>
+      <blockquote>Selected example: Using a new coffee making machine</blockquote>
+      <blockquote>Your response should consist of at least three scenarios describing different roles such as administrator, user, driver and so on. Be prepared to share your scenarios at this week's seminar. You can test your Gherkin scripts in the Behave engine. </blockquote>
+      <pre>
+      Scenario 1: Make a coffee by using a new coffee making machine (User's perspectives)
+        Given that the coffee machine has enough coffee beans to make an americano
+          and the coffee machine is in the standby mode
+          and ready to make a coffee
+          When a user clicks the button for making an americano
+          then the coffee machine runs the predefined procedures to make an americano
+          and the coffee machine starts to fill the cup
+          and the level of coffee beans and water are reduced
+      </pre>
+      <pre>
+        Scenario 2: Make a coffee by using a new coffee making machine (Administrator's perspectives)
+           Given that the coffee machine is running in low coffee beans level
+             and the indicator of low coffee beans level is lighted up
+            When an administrator clicks the button for making an americano
+            then the coffee machine refuses to make an americano
+            then the buzzer starts to alert the user to fill in coffee beans to the minimum level
+             and an administrator fill in coffee beans to the coffee machine
+            then the coffee machine runs the predefined procedures to make an americano
+             and the coffee machine starts to fill the cup
+             and the level of coffee beans and water are reduced
+      </pre>
+      <pre>
+        Scenario 3: Make a coffee by using a new coffee making machine (Administrator's perspectives)
+        Given that the coffee machine is running in low water level
+          and the indicator of low water level is lighted up
+         When an administrator clicks the button for making an americano
+         then the coffee machine refuses to make an americano
+         then the buzzer starts to alert the user to fill in water to the minimum level
+          and an administrator fill in water to the coffee machine
+         then the coffee machine runs the predefined procedures to make an americano
+          and the coffee machine starts to fill the cup
+          and the level of coffee beans and water are reduced
+      </pre>
+    </div>
+  </div>
+
+   <!-- Footer -->
+   <footer class="wrapper style1 align-center">
+    <div class="inner">
+      <ul class="icons">
+        <li><a href="tel:+852 51139360" class="icon style2 fa-phone" alt="Call Yin Ping Lai mobile phone"><span class="label">Phone</span></a></li>
+        <li><a href="https://www.linkedin.com/in/kris-lai-29b47613a/" class="icon brands style2 fa-linkedin-in" alt="Yin Ping Lai LinkedIn profile page"><span class="label">LinkedIn</span></a></li>
+        <li><a href="https://github.com/yinpinglai" class="icon brands style2 fa-github" alt="Yin Ping Lai Github profile page"><span class="label">Github</span></a></li>
+        <li><a href="mailto:ypinglai29@gmail.com" class="icon style2 fa-envelope" alt="Send email to ypinglai29@gmail.com"><span class="label">Email</span></a></li>
+      </ul>
+      <p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../../../assets/js/jquery.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrollex.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrolly.min.js"></script>
+  <script src="../../../../assets/js/browser.min.js"></script>
+  <script src="../../../../assets/js/breakpoints.min.js"></script>
+  <script src="../../../../assets/js/util.js"></script>
+  <script src="../../../../assets/js/main.js"></script>
+</body>
+</html>
