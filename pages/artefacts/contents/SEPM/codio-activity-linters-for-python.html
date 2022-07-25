@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../../../../assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="../../../../assets/css/noscript.css" /></noscript>
+  <title>Codio Activity - Linters for Python</title>
+</head>
+<body class="is-preload">
+  <div id="wrapper">
+    <div class="content-wrapper">
+      <h2>Codio Activity - Linters for Python</h2>
+      <hr />
+      <br />
+      <div>
+        <h3>Exercise 1</h3>
+        <blockquote>Now run the code against a variety of linters to test the code quality:</div>
+        <ul>
+          <li>
+            <b>pylint code_with_lint.py</b>
+            <br />
+            <img src="./images/codio-activity-pylint-code-for-lint-results.png" alt="Running pylint for code_for_lint.py results image" width="500">
+          </li>
+          <li>
+            <b>pyflakes code_with_lint.py</b>
+            <br />
+            <img src="./images/codio-activity-pyflakes-code-for-lint-results.png" alt="Running pyflakes for code_for_lint.py results image" width="500">
+          </li>
+          <li>
+            <b>pydocstyle code_with_lint.py</b>
+            <br />
+            <img src="./images/codio-activity-pydocstyle-code-for-lint-results.png" alt="Running pydocstyle for code_for_lint.py results image" width="500">
+          </li>
+          <li>
+            <b>pycodestyle code_with_lint.py</b>
+            <br />
+            <img src="./images/codio-activity-pycodestyle-code-for-lint-results.png" alt="Running pycodestyle for code_for_lint.py results image" width="500">
+          </li>
+        </ul>
+        <blockquote>Compare the effectiveness of each tool in defining and identifying code quality. What can you conclude about the effectiveness of each approach?</blockquote>
+        <p>Pylint and Pyflaskes provide Python coding recommendations, such as unused libraries and variables. Pycodestyle and Pydocstyle provide Python coding style recommendations, such as spaces between statements.</p>
+        <h3>Exercise 2</h3>
+        <blockquote>Run equivalence.py, which is an implementation of equivalence partitioning. You should carry out further investigations on the code and experiment with it.</blockquote>
+        <div>I modified the equivalence equation function:</div>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">test_equivalence_partition</span>():
+    relation <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">lambda</span> x, y: (x <span style="color: #333333">-</span> y) <span style="color: #333333">%</span> <span style="color: #0000DD; font-weight: bold">6</span> <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">0</span>
+    classes, partitions <span style="color: #333333">=</span> equivalence_partition(
+        <span style="color: #007020">range</span>(<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>, <span style="color: #0000DD; font-weight: bold">10</span>),
+        relation
+    )
+    check_equivalence_partition(classes, partitions, relation)
+    <span style="color: #008800; font-weight: bold">for</span> c <span style="color: #000000; font-weight: bold">in</span> classes: <span style="color: #008800; font-weight: bold">print</span>(c)
+    <span style="color: #008800; font-weight: bold">for</span> o, c <span style="color: #000000; font-weight: bold">in</span> partitions<span style="color: #333333">.</span>items(): <span style="color: #008800; font-weight: bold">print</span>(o, <span style="background-color: #fff0f0">&#39;:&#39;</span>, c)
+</pre></div>
+      <br />
+      <div>The results are:</div>
+      <code>set([5, -1])
+        set([0, 6])
+        set([1, 7])
+        set([8, 2])
+        set([9, 3])
+        set([5, -1])
+        (0, ':', set([0, 6]))
+        (1, ':', set([1, 7]))
+        (2, ':', set([8, 2]))
+        (3, ':', set([9, 3]))
+        (4, ':', set([5, -1]))
+        (5, ':', set([0, 6]))
+        (6, ':', set([1, 7]))
+        (7, ':', set([8, 2]))
+        (8, ':', set([9, 3]))
+        (9, ':', set([5, -1]))
+        </code>
+        <br />
+        <br />
+        <div>We can see that if any two elements passed the equivalence function, it will put it into a new set object.</div>
+        <br />
+        <h3>Exercise 3</h3>
+        <div>Run styleLint.py.</div>
+        <blockquote>What happens when the code is run?</blockquote>
+        <p>The compile raised an IndentationError exception.</p>
+        <blockquote>Can you modify this code for a more favourable outcome?</blockquote>
+        <p>Yes.</p>
+        <blockquote>What amendments have you made to the code?</blockquote>
+        <p>I adjusted the indentation for those lines.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">factorial</span>(n):
+  <span style="color: #DD4422">&quot;&quot;&quot; Return factorial of n &quot;&quot;&quot;</span>
+  <span style="color: #008800; font-weight: bold">if</span> n <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">0</span>:
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">1</span>
+  <span style="color: #008800; font-weight: bold">else</span>:
+    <span style="color: #008800; font-weight: bold">return</span> n<span style="color: #333333">*</span>factorial(n<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>)
+</pre></div>
+        <br />
+        <h3>Exercise 4</h3>
+        <div>Run pylint on pylintTest.py</div>
+        <blockquote>Can you correct each of the errors identified by pylint?</blockquote>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">string</span>
+ 
+shift <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">3</span>
+choice <span style="color: #333333">=</span> <span style="color: #007020">raw_input</span>(<span style="background-color: #fff0f0">&quot;would you like to encode or decode?&quot;</span>)
+word <span style="color: #333333">=</span> (<span style="color: #007020">raw_input</span>(<span style="background-color: #fff0f0">&quot;Please enter text&quot;</span>))
+letters <span style="color: #333333">=</span> string<span style="color: #333333">.</span>ascii_letters <span style="color: #333333">+</span> string<span style="color: #333333">.</span>punctuation <span style="color: #333333">+</span> string<span style="color: #333333">.</span>digits
+encoded <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;&#39;</span>
+<span style="color: #008800; font-weight: bold">if</span> choice <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&quot;encode&quot;</span>:
+  <span style="color: #008800; font-weight: bold">for</span> letter <span style="color: #000000; font-weight: bold">in</span> word:
+    <span style="color: #008800; font-weight: bold">if</span> letter <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&#39; &#39;</span>:
+      encoded <span style="color: #333333">=</span> encoded <span style="color: #333333">+</span> <span style="background-color: #fff0f0">&#39; &#39;</span>
+    <span style="color: #008800; font-weight: bold">else</span>:
+      x <span style="color: #333333">=</span> letters<span style="color: #333333">.</span>index(letter) <span style="color: #333333">+</span> shift
+      encoded<span style="color: #333333">=</span>encoded <span style="color: #333333">+</span> letters[x]
+    <span style="color: #008800; font-weight: bold">if</span> choice <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&quot;decode&quot;</span>:
+      <span style="color: #008800; font-weight: bold">for</span> letter <span style="color: #000000; font-weight: bold">in</span> word:
+        <span style="color: #008800; font-weight: bold">if</span> letter <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&#39; &#39;</span>:
+            encoded <span style="color: #333333">=</span> encoded <span style="color: #333333">+</span> <span style="background-color: #fff0f0">&#39; &#39;</span>
+        <span style="color: #008800; font-weight: bold">else</span>:
+          x <span style="color: #333333">=</span> letters<span style="color: #333333">.</span>index(letter) <span style="color: #333333">-</span> shift
+          encoded <span style="color: #333333">=</span> encoded <span style="color: #333333">+</span> letters[x]
+
+<span style="color: #008800; font-weight: bold">print</span>(encoded)
+</pre></div>
+        <br />
+        <p>I fixed each of the errors identified by pylint.</p>
+        <h3>Exercise 5</h3>
+        <div>Run flake8 on pylintTest.py</div>
+        <blockquote>Review the errors returned. In what way does this error message differ from the error message returned by pylint?</blockquote>
+        <p>The flake8 library only provides a simple error message. On the other hand, pylint provides comprehensive error messages, and leads the way toward to that error.</p>
+        <div>Run flake8 on metricTest.py.</div>
+        <blockquote>Can you correct each of the errors returned by flake8?</blockquote>
+        <p>Yes, but it is difficult for me to locate each of the errors because it provides a general error message only.</p>
+        <blockquote>What amendments have you made to the code?</blockquote>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">#CODE SOURCE: SOFTWARE ARCHITECTURE WITH PYTHON </span>
+
+<span style="color: #DD4422">&quot;&quot;&quot;</span>
+<span style="color: #DD4422">Module metricTest.py</span>
+<span style="color: #DD4422">Metric example - Module which is used as a testbed for static checkers.</span>
+<span style="color: #DD4422">This is a mix of different functions and classes doing different things.</span>
+
+<span style="color: #DD4422">&quot;&quot;&quot;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">random</span>
+<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">fn</span>(x, y):
+    <span style="color: #DD4422">&quot;&quot;&quot; A function which performs a sum &quot;&quot;&quot;</span>
+    <span style="color: #008800; font-weight: bold">return</span> x <span style="color: #333333">+</span> y
+
+<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">find_optimal_route_to_my_office_from_home</span>(start_time,
+    expected_time,
+    favorite_route<span style="color: #333333">=</span><span style="background-color: #fff0f0">&#39;SBS1K&#39;</span>,
+    favorite_option<span style="color: #333333">=</span><span style="background-color: #fff0f0">&#39;bus&#39;</span>):
+
+    d <span style="color: #333333">=</span> (expected_time <span style="color: #333333">-</span> start_time)<span style="color: #333333">.</span>total_seconds()<span style="color: #333333">/</span><span style="color: #6600EE; font-weight: bold">60.0</span>
+
+    <span style="color: #008800; font-weight: bold">if</span> d<span style="color: #333333">&lt;=</span><span style="color: #0000DD; font-weight: bold">30</span>:
+        <span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&#39;car&#39;</span>
+
+    <span style="color: #888888"># If d&gt;30 but &lt;45, first drive then take metro</span>
+    <span style="color: #008800; font-weight: bold">if</span> d<span style="color: #333333">&gt;</span><span style="color: #0000DD; font-weight: bold">30</span> <span style="color: #000000; font-weight: bold">and</span> d<span style="color: #333333">&lt;</span><span style="color: #0000DD; font-weight: bold">45</span>:
+        <span style="color: #008800; font-weight: bold">return</span> (<span style="background-color: #fff0f0">&#39;car&#39;</span>, <span style="background-color: #fff0f0">&#39;metro&#39;</span>)
+
+    <span style="color: #888888"># If d&gt;45 there are a combination of optionsWriting Modifiable and Readable Code</span>
+    <span style="color: #888888"># [ 68 ]</span>
+    <span style="color: #008800; font-weight: bold">if</span> d<span style="color: #333333">&gt;</span><span style="color: #0000DD; font-weight: bold">45</span>:
+        <span style="color: #008800; font-weight: bold">if</span> d<span style="color: #333333">&lt;</span><span style="color: #0000DD; font-weight: bold">60</span>:
+        <span style="color: #888888"># First volvo,then connecting bus</span>
+            <span style="color: #008800; font-weight: bold">return</span> (<span style="background-color: #fff0f0">&#39;bus:335E&#39;</span>,<span style="background-color: #fff0f0">&#39;bus:connector&#39;</span>)
+        <span style="color: #008800; font-weight: bold">elif</span> d<span style="color: #333333">&gt;</span><span style="color: #0000DD; font-weight: bold">80</span>:
+        <span style="color: #888888"># Might as well go by normal bus</span>
+            <span style="color: #008800; font-weight: bold">return</span> random<span style="color: #333333">.</span>choice((<span style="background-color: #fff0f0">&#39;bus:330&#39;</span>,<span style="background-color: #fff0f0">&#39;bus:331&#39;</span>,<span style="background-color: #fff0f0">&#39;:&#39;</span><span style="color: #333333">.</span>
+                join((favorite_option, favorite_route))))
+        <span style="color: #008800; font-weight: bold">elif</span> d<span style="color: #333333">&gt;</span><span style="color: #0000DD; font-weight: bold">90</span>:
+        <span style="color: #888888"># Relax and choose favorite route</span>
+            <span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&#39;:&#39;</span><span style="color: #333333">.</span>join((favorite_option, favorite_route))
+
+<span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">C</span>(<span style="color: #007020">object</span>):
+    <span style="color: #DD4422">&quot;&quot;&quot; A class which does almost nothing &quot;&quot;&quot;</span>
+    
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">__init__</span>(<span style="color: #007020">self</span>, x,y):
+        <span style="color: #007020">self</span><span style="color: #333333">.</span>x <span style="color: #333333">=</span> x
+        <span style="color: #007020">self</span><span style="color: #333333">.</span>y <span style="color: #333333">=</span> y
+    
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">f</span>(<span style="color: #007020">self</span>):
+        <span style="color: #008800; font-weight: bold">pass</span>
+
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">g</span>(<span style="color: #007020">self</span>, x, y):
+        <span style="color: #008800; font-weight: bold">if</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>x<span style="color: #333333">&gt;</span>x:
+            <span style="color: #008800; font-weight: bold">return</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>x<span style="color: #333333">+</span><span style="color: #007020">self</span><span style="color: #333333">.</span>y
+        <span style="color: #008800; font-weight: bold">elif</span> x<span style="color: #333333">&gt;</span><span style="color: #007020">self</span><span style="color: #333333">.</span>x:
+            <span style="color: #008800; font-weight: bold">return</span> x<span style="color: #333333">+</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>y
+
+<span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">D</span>(C):
+    <span style="color: #DD4422">&quot;&quot;&quot; D class &quot;&quot;&quot;</span>
+        
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">__init__</span>(<span style="color: #007020">self</span>, x):
+        <span style="color: #007020">self</span><span style="color: #333333">.</span>x <span style="color: #333333">=</span> x
+    
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">f</span>(<span style="color: #007020">self</span>, x,y):
+        <span style="color: #008800; font-weight: bold">if</span> x<span style="color: #333333">&gt;</span>y:
+            <span style="color: #008800; font-weight: bold">return</span> x<span style="color: #333333">-</span>y
+        <span style="color: #008800; font-weight: bold">else</span>:
+        <span style="color: #888888"># else:Chapter 2</span>
+        <span style="color: #888888"># [ 69 ]</span>
+            <span style="color: #008800; font-weight: bold">return</span> x<span style="color: #333333">+</span>y
+    
+    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">g</span>(<span style="color: #007020">self</span>, y):
+        <span style="color: #008800; font-weight: bold">if</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>x<span style="color: #333333">&gt;</span>y:
+            <span style="color: #008800; font-weight: bold">return</span> <span style="color: #007020">self</span><span style="color: #333333">.</span>x<span style="color: #333333">+</span>y
+        <span style="color: #008800; font-weight: bold">else</span>:
+            <span style="color: #008800; font-weight: bold">return</span> y<span style="color: #333333">-</span><span style="color: #007020">self</span><span style="color: #333333">.</span>x
+</pre></div>
+        <br />
+        <p>I adjusted the indentation for those lines, and commented out some lines.</p>
+        <h3>Exercise 6</h3>
+        <blockquote>Run mccabe on sums.py. What is the result?</blockquote>
+        <img src="./images/codio-activity-mccabe-sums-results.png" alt="Running mccabe for sums.py results image" width="500">
+        <blockquote>Run mccabe on sums2.py. What is the result?</blockquote>
+        <img src="./images/codio-activity-mccabe-sums2-results.png" alt="Running mccabe for sums2.py results image" width="500">
+        <br />
+        <br />
+        <blockquote>What are the contributors to the cyclomatic complexity in each piece of code?</blockquote>
+        <p>It counts the number of "loops and if statements".  It shows an upper bound for the number of test cases required to obtain branch coverage of the code.</p>
+      </div>
+    </div>
+  </div>
+
+   <!-- Footer -->
+   <footer class="wrapper style1 align-center">
+    <div class="inner">
+      <ul class="icons">
+        <li><a href="tel:+852 51139360" class="icon style2 fa-phone" alt="Call Yin Ping Lai mobile phone"><span class="label">Phone</span></a></li>
+        <li><a href="https://www.linkedin.com/in/kris-lai-29b47613a/" class="icon brands style2 fa-linkedin-in" alt="Yin Ping Lai LinkedIn profile page"><span class="label">LinkedIn</span></a></li>
+        <li><a href="https://github.com/yinpinglai" class="icon brands style2 fa-github" alt="Yin Ping Lai Github profile page"><span class="label">Github</span></a></li>
+        <li><a href="mailto:ypinglai29@gmail.com" class="icon style2 fa-envelope" alt="Send email to ypinglai29@gmail.com"><span class="label">Email</span></a></li>
+      </ul>
+      <p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../../../assets/js/jquery.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrollex.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrolly.min.js"></script>
+  <script src="../../../../assets/js/browser.min.js"></script>
+  <script src="../../../../assets/js/breakpoints.min.js"></script>
+  <script src="../../../../assets/js/util.js"></script>
+  <script src="../../../../assets/js/main.js"></script>
+</body>
+</html>
