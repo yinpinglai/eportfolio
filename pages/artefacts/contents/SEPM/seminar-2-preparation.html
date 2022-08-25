@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../../../../assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="../../../../assets/css/noscript.css" /></noscript>
+  <title>Seminar 2 Preparation</title>
+</head>
+<body class="is-preload">
+  <div id="wrapper">
+    <div class="content-wrapper">
+      <h2>Seminar 2 Preparation</h2>
+      <hr />
+      <br />
+      <h3>Activity 1</h3>
+      <blockquote>Review the NIST Privacy tools. How do these fit with the risk assessment methods and tools described in last week’s lecturecast?</blockquote>
+      <p>According to the risk management process method described in last week’s lecturecast, the NIST Privacy tools is useful for identifying, evaluating the potentials privacy risks for the entire system. It is also beneficials on distinguishing the privacy risk and the compliance risk for the organization. We can tolerate and fix those identified risks and reuse the NIST Privacy tools to check it again. We can also repeat this cycle until the organization standing away from those risks.</p>
+      <blockquote>Create a python program that implements one of the estimation methods covered in the lecturecast. You can use the Jupyter Notebook workspace in Codio and save your work to your GitHub repository.</blockquote>
+      <strong>Implementation of using COCOMO Model for estimation</strong><br />
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">sys</span>
+  <span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">math</span>
+
+  <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">do_calculation_and_display_results</span>(kloc, model):
+      <span style="color: #008800; font-weight: bold">if</span> model <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&#39;organic&#39;</span> <span style="color: #000000; font-weight: bold">and</span> model <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&#39;semi_detached&#39;</span> <span style="color: #000000; font-weight: bold">and</span> model <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&#39;complex&#39;</span>:
+          <span style="color: #008800; font-weight: bold">print</span>(f<span style="background-color: #fff0f0">&#39;Unsupported model: {model}&#39;</span>)
+          <span style="color: #008800; font-weight: bold">return</span>
+      
+      a <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>
+      b <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>
+      c <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>
+      d <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>
+  
+      <span style="color: #008800; font-weight: bold">if</span> model <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&#39;organic&#39;</span>:
+          a <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">2.4</span>
+          b <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">1.05</span>
+          c <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">2.5</span>
+          d <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">0.38</span>
+      <span style="color: #008800; font-weight: bold">elif</span> model <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&#39;semi_detached&#39;</span>:
+          a <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">3.0</span>
+          b <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">1.12</span>
+          c <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">2.5</span>
+          d <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">0.35</span>
+      <span style="color: #008800; font-weight: bold">else</span>:
+          a <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">3.6</span>
+          b <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">1.20</span>
+          c <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">2.5</span>
+          d <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">0.32</span>
+      
+      effort <span style="color: #333333">=</span> a <span style="color: #333333">*</span> math<span style="color: #333333">.</span>pow(kloc, b)
+      dtime <span style="color: #333333">=</span> c <span style="color: #333333">*</span> math<span style="color: #333333">.</span>pow(effort, d)
+      staff <span style="color: #333333">=</span> effort <span style="color: #333333">/</span> dtime
+  
+      <span style="color: #008800; font-weight: bold">print</span>(f<span style="background-color: #fff0f0">&#39;Estimated result using Cocomo model: {model}&#39;</span>)
+      <span style="color: #008800; font-weight: bold">print</span>(f<span style="background-color: #fff0f0">&#39;{str(round(effort))} person-months&#39;</span>)
+      <span style="color: #008800; font-weight: bold">print</span>(f<span style="background-color: #fff0f0">&#39;{str(round(dtime))} months&#39;</span>)
+      <span style="color: #008800; font-weight: bold">print</span>(f<span style="background-color: #fff0f0">&#39;{str(round(staff))} person&#39;</span>)
+  
+  <span style="color: #008800; font-weight: bold">if</span> __name__ <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&#39;__main__&#39;</span>:
+      <span style="color: #008800; font-weight: bold">if</span> <span style="color: #007020">len</span>(sys<span style="color: #333333">.</span>argv) <span style="color: #333333">&lt;</span> <span style="color: #0000DD; font-weight: bold">3</span>:
+          <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&#39;Usage: &#39;</span>)
+          <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&#39;python3 cocomo.py [KLOC] [model]&#39;</span>)
+      <span style="color: #008800; font-weight: bold">else</span>:
+          kloc <span style="color: #333333">=</span> <span style="color: #007020">int</span>(sys<span style="color: #333333">.</span>argv[<span style="color: #0000DD; font-weight: bold">1</span>])
+          model <span style="color: #333333">=</span> sys<span style="color: #333333">.</span>argv[<span style="color: #0000DD; font-weight: bold">2</span>]
+          do_calculation_and_display_results(kloc, model)
+  </pre></div><br />
+    <strong>Test cases:</strong><br />
+    <ol>
+      <li>
+        3000 Lines of code using the organic model<br /><br />
+        <strong>Result:</strong><br />
+        <pre>
+Estimated result using Cocomo model: organic
+10745 person-months
+85 months
+126 person
+        </pre>
+      </li>
+      <li>
+        3000 Lines of code using the semi detached model<br /><br />
+        <strong>Result:</strong><br />
+        <pre>
+Estimated result using Cocomo model: semi_detached
+23523 person-months
+85 months
+278 person
+        </pre>
+      </li>
+      <li>
+        3000 Lines of code using the complex model<br /><br />
+        <strong>Result:</strong><br />
+        <pre>
+Estimated result using Cocomo model: complex
+53561 person-months
+82 months
+657 person
+        </pre>
+      </li>
+    </ol>
+    <blockquote>Based on the requirements you have gathered for your assignment, create an estimate of the total effort and time to complete the planned demonstration of your system.</blockquote>
+    <img src="./images/seminar-2-gantt-chart.png" /><br />
+    <h3>Activity 2</h3>
+    <blockquote>Also, read the articles by Verner et al (2014) and Anton & Nucu (2020) and then answer the following questions: </blockquote>
+    <ol>
+      <li>
+        What are the main risks that the authors identify?<br />
+        <p>The authors categories risks into major four themes: GSD outsourcing rationale, software development process, human resources, and project management. In the traditional SDLC model, we have requirement gathering, software development, software quality assurance, and software maintenance phases. The authors indicated potentials risks, and provided mitigations for these four phases when using the GSD method for implementing the solution.</p>
+      </li>
+      <li>
+        Which of the frameworks discussed in the Unit 3 lecturecast would you use to capture and categorise the risks? <br />
+        <p>I would use the expert judgement estimation method to capture and categorise the risks because it measures the Unadjusted Use Case Weight (UUCW) and Unadjusted Actor Weight, the technical complexity, and environment factors for the risks of the project. It covers not only on technical area, it also covers the non-technical area, such as the management level and cultural differences.</p>
+      </li>
+      <li>
+        Add a risk and a suggested mitigation to the module forum. 
+        <div><b>Risk: </b>Lack of synchronous communication in agile development causes problems.</div>
+        <div><b>Mitigation: </b>Proactive resource management helps ensure that a Scrum team has the necessary tools and skills to support Scrum practices in distributed settings.</div>
+      </li>
+    </ol>
+    </div>
+  </div>
+
+   <!-- Footer -->
+   <footer class="wrapper style1 align-center">
+    <div class="inner">
+      <ul class="icons">
+        <li><a href="tel:+852 51139360" class="icon style2 fa-phone" alt="Call Yin Ping Lai mobile phone"><span class="label">Phone</span></a></li>
+        <li><a href="https://www.linkedin.com/in/kris-lai-29b47613a/" class="icon brands style2 fa-linkedin-in" alt="Yin Ping Lai LinkedIn profile page"><span class="label">LinkedIn</span></a></li>
+        <li><a href="https://github.com/yinpinglai" class="icon brands style2 fa-github" alt="Yin Ping Lai Github profile page"><span class="label">Github</span></a></li>
+        <li><a href="mailto:ypinglai29@gmail.com" class="icon style2 fa-envelope" alt="Send email to ypinglai29@gmail.com"><span class="label">Email</span></a></li>
+      </ul>
+      <p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../../../assets/js/jquery.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrollex.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrolly.min.js"></script>
+  <script src="../../../../assets/js/browser.min.js"></script>
+  <script src="../../../../assets/js/breakpoints.min.js"></script>
+  <script src="../../../../assets/js/util.js"></script>
+  <script src="../../../../assets/js/main.js"></script>
+</body>
+</html>

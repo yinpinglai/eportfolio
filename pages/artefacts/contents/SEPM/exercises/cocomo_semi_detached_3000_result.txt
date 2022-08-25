@@ -1,0 +1,4 @@
+Estimated result using Cocomo model: semi_detached
+23523 person-months
+85 months
+278 person
