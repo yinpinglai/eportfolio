@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="../../../../assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="../../../../assets/css/noscript.css" /></noscript>
+  <title>E-Portfolio Activity - Improve Code Quality</title>
+</head>
+<body class="is-preload">
+  <div id="wrapper">
+    <div class="content-wrapper">
+      <h2>E-Portfolio Activity - Improve Code Quality</h2>
+      <hr />
+      <br />
+      <blockquote>e-Portfolio Activity: Improving Code Quality. Refer to the Mertz (2019) resource.  Use some Python code which you have developed in the past and apply at least 3 of the strategies presented at the source to improve its quality. You can use the Jupyter Notebook workspace in Codio and save your work to your GitHub repository.</blockquote>
+      <p>I am going to reuse my previous implementation of COCOMO estimation model in the seminar 2.</p>
+      <h3>Source Code before making any changes</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">sys</span>
+  <span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">math</span>
+
+  <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">do_calculation_and_display_results</span>(kloc, model):
+      <span style="color: #008800; font-weight: bold">if</span> model <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&#39;organic&#39;</span> <span style="color: #000000; font-weight: bold">and</span> model <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&#39;semi_detached&#39;</span> <span style="color: #000000; font-weight: bold">and</span> model <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&#39;complex&#39;</span>:
+          <span style="color: #008800; font-weight: bold">print</span>(f<span style="background-color: #fff0f0">&#39;Unsupported model: {model}&#39;</span>)
+          <span style="color: #008800; font-weight: bold">return</span>
+      
+      a <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>
+      b <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>
+      c <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>
+      d <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>
+  
+      <span style="color: #008800; font-weight: bold">if</span> model <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&#39;organic&#39;</span>:
+          a <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">2.4</span>
+          b <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">1.05</span>
+          c <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">2.5</span>
+          d <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">0.38</span>
+      <span style="color: #008800; font-weight: bold">elif</span> model <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&#39;semi_detached&#39;</span>:
+          a <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">3.0</span>
+          b <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">1.12</span>
+          c <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">2.5</span>
+          d <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">0.35</span>
+      <span style="color: #008800; font-weight: bold">else</span>:
+          a <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">3.6</span>
+          b <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">1.20</span>
+          c <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">2.5</span>
+          d <span style="color: #333333">=</span> <span style="color: #6600EE; font-weight: bold">0.32</span>
+      
+      effort <span style="color: #333333">=</span> a <span style="color: #333333">*</span> math<span style="color: #333333">.</span>pow(kloc, b)
+      dtime <span style="color: #333333">=</span> c <span style="color: #333333">*</span> math<span style="color: #333333">.</span>pow(effort, d)
+      staff <span style="color: #333333">=</span> effort <span style="color: #333333">/</span> dtime
+  
+      <span style="color: #008800; font-weight: bold">print</span>(f<span style="background-color: #fff0f0">&#39;Estimated result using Cocomo model: {model}&#39;</span>)
+      <span style="color: #008800; font-weight: bold">print</span>(f<span style="background-color: #fff0f0">&#39;{str(round(effort))} person-months&#39;</span>)
+      <span style="color: #008800; font-weight: bold">print</span>(f<span style="background-color: #fff0f0">&#39;{str(round(dtime))} months&#39;</span>)
+      <span style="color: #008800; font-weight: bold">print</span>(f<span style="background-color: #fff0f0">&#39;{str(round(staff))} person&#39;</span>)
+  
+  <span style="color: #008800; font-weight: bold">if</span> __name__ <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&#39;__main__&#39;</span>:
+      <span style="color: #008800; font-weight: bold">if</span> <span style="color: #007020">len</span>(sys<span style="color: #333333">.</span>argv) <span style="color: #333333">&lt;</span> <span style="color: #0000DD; font-weight: bold">3</span>:
+          <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&#39;Usage: &#39;</span>)
+          <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&#39;python3 cocomo.py [KLOC] [model]&#39;</span>)
+      <span style="color: #008800; font-weight: bold">else</span>:
+          kloc <span style="color: #333333">=</span> <span style="color: #007020">int</span>(sys<span style="color: #333333">.</span>argv[<span style="color: #0000DD; font-weight: bold">1</span>])
+          model <span style="color: #333333">=</span> sys<span style="color: #333333">.</span>argv[<span style="color: #0000DD; font-weight: bold">2</span>]
+          do_calculation_and_display_results(kloc, model)
+  </pre></div><br />
+      <p>I applied three strategies which suggested by Mertz(2019)</p>
+      <ol>
+        <li>Use black and PyLint to verify the coding style.</li>
+        <li>Refactor the project folder structure.</li>
+        <li>Document all functions and modules.</li>
+      </ol>
+      <p>Complete Source can be found from <a href="./exercises/clean_and_pythonic_style/">here</a>.</p>
+      <h3>Source Code after applied three strategies</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #DD4422">&#39;&#39;&#39;</span>
+  <span style="color: #DD4422">The main script of performing estimation using COCOMO model</span>
+  <span style="color: #DD4422">&#39;&#39;&#39;</span>
+  <span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">sys</span>
+  <span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">math</span>
+  
+  <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">do_calculation_and_display_results</span>(kloc: <span style="color: #007020">int</span>, model: <span style="color: #007020">str</span>) <span style="color: #333333">-&gt;</span> <span style="color: #007020">None</span>:
+      <span style="color: #DD4422">&#39;&#39;&#39;</span>
+  <span style="color: #DD4422">    Do calculation and display results</span>
+  
+  <span style="color: #DD4422">    Args:</span>
+  <span style="color: #DD4422">        kloc: The total number of lines of code</span>
+  <span style="color: #DD4422">        model: The selected model for calculation</span>
+  
+  <span style="color: #DD4422">    Returns:</span>
+  <span style="color: #DD4422">        None</span>
+  <span style="color: #DD4422">    &#39;&#39;&#39;</span>
+      <span style="color: #008800; font-weight: bold">if</span> model <span style="color: #000000; font-weight: bold">not</span> <span style="color: #000000; font-weight: bold">in</span> [<span style="background-color: #fff0f0">&#39;organic&#39;</span>, <span style="background-color: #fff0f0">&#39;semi_detached&#39;</span>, <span style="background-color: #fff0f0">&#39;complex&#39;</span>]:
+          <span style="color: #008800; font-weight: bold">print</span>(f<span style="background-color: #fff0f0">&quot;Unsupported model: {model}&quot;</span>)
+          <span style="color: #008800; font-weight: bold">return</span>
+  
+      model_constant_mapper <span style="color: #333333">=</span> {
+          <span style="background-color: #fff0f0">&#39;organic&#39;</span>: [<span style="color: #6600EE; font-weight: bold">2.4</span>, <span style="color: #6600EE; font-weight: bold">1.05</span>, <span style="color: #6600EE; font-weight: bold">2.5</span>, <span style="color: #6600EE; font-weight: bold">0.38</span>],
+          <span style="background-color: #fff0f0">&#39;semi_detached&#39;</span>: [<span style="color: #6600EE; font-weight: bold">3.0</span>, <span style="color: #6600EE; font-weight: bold">1.12</span>, <span style="color: #6600EE; font-weight: bold">2.5</span>, <span style="color: #6600EE; font-weight: bold">0.35</span>],
+          <span style="background-color: #fff0f0">&#39;complex&#39;</span>: [<span style="color: #6600EE; font-weight: bold">3.6</span>, <span style="color: #6600EE; font-weight: bold">1.20</span>, <span style="color: #6600EE; font-weight: bold">2.5</span>, <span style="color: #6600EE; font-weight: bold">0.32</span>],
+      }
+      model_constants <span style="color: #333333">=</span> model_constant_mapper[model]
+  
+      effort <span style="color: #333333">=</span> model_constants[<span style="color: #0000DD; font-weight: bold">0</span>] <span style="color: #333333">*</span> math<span style="color: #333333">.</span>pow(kloc, model_constants[<span style="color: #0000DD; font-weight: bold">1</span>])
+      dtime <span style="color: #333333">=</span> model_constants[<span style="color: #0000DD; font-weight: bold">2</span>] <span style="color: #333333">*</span> math<span style="color: #333333">.</span>pow(effort, model_constants[<span style="color: #0000DD; font-weight: bold">3</span>])
+      staff <span style="color: #333333">=</span> effort <span style="color: #333333">/</span> dtime
+  
+      <span style="color: #008800; font-weight: bold">print</span>(f<span style="background-color: #fff0f0">&quot;Estimated result using Cocomo model: {model}&quot;</span>)
+      <span style="color: #008800; font-weight: bold">print</span>(f<span style="background-color: #fff0f0">&quot;{str(round(effort))} person-months&quot;</span>)
+      <span style="color: #008800; font-weight: bold">print</span>(f<span style="background-color: #fff0f0">&quot;{str(round(dtime))} months&quot;</span>)
+      <span style="color: #008800; font-weight: bold">print</span>(f<span style="background-color: #fff0f0">&quot;{str(round(staff))} person&quot;</span>)
+  
+  
+  <span style="color: #008800; font-weight: bold">if</span> __name__ <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&quot;__main__&quot;</span>:
+      <span style="color: #008800; font-weight: bold">if</span> <span style="color: #007020">len</span>(sys<span style="color: #333333">.</span>argv) <span style="color: #333333">&lt;</span> <span style="color: #0000DD; font-weight: bold">3</span>:
+          <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&quot;Usage: &quot;</span>)
+          <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&quot;python3 cocomo.py [KLOC] [model]&quot;</span>)
+      <span style="color: #008800; font-weight: bold">else</span>:
+          _kloc <span style="color: #333333">=</span> <span style="color: #007020">int</span>(sys<span style="color: #333333">.</span>argv[<span style="color: #0000DD; font-weight: bold">1</span>])
+          _model <span style="color: #333333">=</span> sys<span style="color: #333333">.</span>argv[<span style="color: #0000DD; font-weight: bold">2</span>]
+          do_calculation_and_display_results(_kloc, _model)
+  </pre></div><br />
+      <h3>References:</h3>
+      <ul>
+        <li>[1] Mertz, J. (2019) Writing Clean and Pythonic Code. Jet Propulsion Laboratory California Institute of Technology.</li>
+      </ul>
+    </div>
+  </div>
+
+   <!-- Footer -->
+   <footer class="wrapper style1 align-center">
+    <div class="inner">
+      <ul class="icons">
+        <li><a href="tel:+852 51139360" class="icon style2 fa-phone" alt="Call Yin Ping Lai mobile phone"><span class="label">Phone</span></a></li>
+        <li><a href="https://www.linkedin.com/in/kris-lai-29b47613a/" class="icon brands style2 fa-linkedin-in" alt="Yin Ping Lai LinkedIn profile page"><span class="label">LinkedIn</span></a></li>
+        <li><a href="https://github.com/yinpinglai" class="icon brands style2 fa-github" alt="Yin Ping Lai Github profile page"><span class="label">Github</span></a></li>
+        <li><a href="mailto:ypinglai29@gmail.com" class="icon style2 fa-envelope" alt="Send email to ypinglai29@gmail.com"><span class="label">Email</span></a></li>
+      </ul>
+      <p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../../../assets/js/jquery.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrollex.min.js"></script>
+  <script src="../../../../assets/js/jquery.scrolly.min.js"></script>
+  <script src="../../../../assets/js/browser.min.js"></script>
+  <script src="../../../../assets/js/breakpoints.min.js"></script>
+  <script src="../../../../assets/js/util.js"></script>
+  <script src="../../../../assets/js/main.js"></script>
+</body>
+</html>
